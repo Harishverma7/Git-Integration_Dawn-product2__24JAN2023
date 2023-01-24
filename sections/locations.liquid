@@ -1,0 +1,344 @@
+{% stylesheet %}
+.map_radio[type=radio]{
+    display:none;
+}
+.map-find{
+  color: #002144;
+  text-align: left;
+  letter-spacing: 0px;
+  text-transform: inherit;
+  font: normal 900 29px/70px cooper-font;
+}
+
+.map-find p{font-family: cooper-font;}
+
+.location-map-under{display: inline-flex;}
+
+.map-find1{
+  color: #002144;
+  text-align: left;
+  letter-spacing: 0px;
+  font:  normal 900 29px/70px cooper-font;
+  line-height: 28px;
+  margin-top: 30px;
+}
+
+.map-find1 p{font-family: cooper-font;}
+
+.map-find1 span{color: #002144; 
+    font-weight: 700;
+    font-style: normal;
+    font-family: sofia_proregular;
+    font-size: 17px;
+    letter-spacing: 1px;
+}
+
+.map-find2{
+  color: #002144;
+  text-align: left;
+  letter-spacing: 0px;
+  font:  normal 900 29px/70px cooper-font;
+  line-height: 28px;
+  margin-top: 30px;
+  margin-left: 50px;
+}
+
+.map-find2 p{font-family: cooper-font;}
+
+.map-find2 span{color: #002144; 
+    font-weight: 700;
+    font-style: normal;
+    font-family: sofia_proregular;
+    font-size: 17px;
+    letter-spacing: 1px;
+}
+
+.element___container {
+    box-sizing: border-box;
+    position: relative;
+    width: 100%;
+    clear: both;
+}
+
+.container__wrapper {
+    margin: auto;
+    width: 72%;
+    position: relative;
+    vertical-align: top;
+}
+
+.section__left, .section___right {
+    box-sizing: inherit;
+    position: relative;
+    display: inline-block;
+    clear: both;
+    padding: 0 0.75rem;
+    vertical-align: inherit;
+}
+
+.section__left {
+    width: 70%;
+    min-height: 500px;
+    float: left;
+}
+
+.section___right{
+    width: 30%;
+    padding-left: 40px;
+}
+.location__wrapper {
+    border-top: 2px solid;
+    border-color: inherit;
+    margin: 20px 4px;
+    box-sizing: border-box;
+
+}
+.store__headline h5 {
+    font-family: "sofia_proregular";
+    font-size: 20px;
+    font-weight: 900;
+    line-height: normal;
+}
+.store__addressline p {
+    line-height: 1;
+    font-family: 'sofia_proregular';
+    font-weight: 500;
+    text-align: left;
+    font: normal normal medium 20px/43px Sofia Pro;
+    letter-spacing: 1px;
+    color: #002144;
+}
+input#search-input {
+    border: 2px solid;
+    border-color: inherit;
+    font-family: "sofia_proregular";
+    font-size: 17px;
+    font-weight: 600;
+    padding: 0.95rem;
+}
+/* adjust the map location */
+#map {
+    min-height: inherit;
+}
+
+/*Search form CSS*/
+.search__bar input[type="text"] {
+    width: 100%;
+    padding: 0.75rem;
+    position: relative;
+    margin-bottom: 0.7rem;
+}
+
+@media screen and (max-width:600px){
+.section___right {
+    top: 3rem;
+}
+}
+
+{% endstylesheet %}
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_wZnc7A_zYW2_VXhJ57EdDGJsXJZ-m_k&libraries=places" async defer ></script>
+<script src={{ "init.custom.map.js" | asset_url }}></script>
+   <div class="element___container">
+        <div class="container__wrapper">
+          <div class="map-find"><p>Find a store near you!</p></div>
+            <div class="section__left">
+              <input type="hidden" name="s_latitude" id="s_latitude" value="" /> 
+                <input type="hidden" name="s_longitude" id="s_longitude" value="" />
+                <div id="map">
+                
+                </div>
+            </div>
+
+            <div class="section___right">
+                    <div class="search__bar">
+                        <input type="hidden" class="active_location" >
+                        <input type ="text" id="search-input" value="" class="controls" type="text" placeholder="Search Box">
+                    </div>
+                    
+                <div class="store_locations">
+                  
+                      <div class="location__container">
+                        
+                          {%- for block in section.blocks -%}
+                          
+                        <label for="mapid{{ forloop.index }}">
+                          <div class="location__wrapper">
+                              <div class="store__headline">
+                                <h5>{{ block.settings.storeName }}</h5>
+                              </div>
+                                
+                              <div class="store__addressline">
+                                <p>{{ block.settings.addressLine }}</p>
+                                <p>{{ block.settings.province }}, {{ block.settings.postalCode }} </p>
+                                <p>{{ block.settings.phoneNumber }}</p>
+                               </div>
+                          </div>
+                        </label>
+                        
+                        <input type="radio" class="map_radio" name="group1" id="mapid{{ forloop.index }}" 
+                        data-lat="{{ block.settings.latitude }}" data-lng="{{ block.settings.longitude }}"/>
+
+                          {% endfor %}
+             
+                      </div>
+                 </div>
+            </div>
+          </div>
+    </div>
+
+<script>
+
+//   var map;
+  
+//   function initAutocomplete() {
+//   var centerCoordinates = new google.maps.LatLng(49.87929254887545, -119.44554216687985, );
+//    map = new google.maps.Map(document.getElementById("map"), {
+//     center: centerCoordinates,
+//     zoom: 13,
+//     mapTypeId: "roadmap",
+//   });
+//   // Create the search box and link it to the UI element.
+//   const input = document.getElementById("search-input");
+//   const searchBox = new google.maps.places.SearchBox(input);
+
+//   //map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+//   // Bias the SearchBox results towards current map's viewport.
+//   map.addListener("bounds_changed", () => {
+//     searchBox.setBounds(map.getBounds());
+//   });
+
+//   let markers = [];
+
+//   // Listen for the event fired when the user selects a prediction and retrieve
+//   // more details for that place.
+//   searchBox.addListener("places_changed", () => {
+//     const places = searchBox.getPlaces();
+
+//     if (places.length == 0) {
+//       return;
+//     }
+
+//     // Clear out the old markers.
+//     markers.forEach((marker) => {
+//       marker.setMap(null);
+//     });
+//     markers = [];
+
+//     // For each place, get the icon, name and location.
+//     const bounds = new google.maps.LatLngBounds();
+
+//     places.forEach((place) => {
+//       if (!place.geometry || !place.geometry.location) {
+//         console.log("Returned place contains no geometry");
+//         return;
+//       }
+
+//       const icon = {
+//         url: place.icon,
+//         size: new google.maps.Size(71, 71),
+//         origin: new google.maps.Point(0, 0),
+//         anchor: new google.maps.Point(17, 34),
+//         scaledSize: new google.maps.Size(25, 25),
+//       };
+
+//       // Create a marker for each place.
+//       markers.push(
+//         new google.maps.Marker({
+//           map,
+//           icon,
+//           title: place.name,
+//           position: place.geometry.location,
+//         })
+//       );
+//       if (place.geometry.viewport) {
+//         // Only geocodes have viewport.
+//         bounds.union(place.geometry.viewport);
+//       } else {
+//         bounds.extend(place.geometry.location);
+//       }
+//     });
+//     map.fitBounds(bounds);
+//   });
+// }
+// window.initAutocomplete = initAutocomplete;
+
+</script>
+
+{% schema %}
+{
+  "name": "Map Locations",
+  "class": "sections",
+  "limit": 1,
+  "settings":[
+                { 
+                  "type":"header",
+                  "content": "Map Location"
+                },
+                {
+                                "type": "text",
+                                "id": "storeName",
+                                "label": "Enter Store Name",
+                                "default": "Enter Your Store Name"
+                              }
+            ],
+"blocks": [
+            {
+              "type": "location",
+              "name": "Store Address",
+              "limit": 30,
+              "settings": [
+                              {
+                                "type": "text",
+                                "id": "storeName",
+                                "label": "Enter Store Name",
+                                "default": "Enter Your Store Name"
+                              },    
+                              {
+                                "type": "text",
+                                "id": "addressLine",
+                                "label": "Enter Address Line",
+                                "default": "Enter Address Line"
+                              },
+                              {
+                                "type": "text",
+                                "id": "province",
+                                "label": "Province",
+                                "default": "BC"
+                              }, 
+                              {
+                                "type": "text",
+                                "id": "postalCode",
+                                "label": "Zip Code",
+                                "default": "xxy vcc"
+                              }, 
+                              {
+                                "type": "text",
+                                "id": "phoneNumber",
+                                "label": "Phone Number",
+                                "default": "+1(542)567-2598"
+                              },
+                              {
+                                "type": "text",
+                                "id": "latitude",
+                                "label": "Latitude",
+                                "default": "49.26375590825157"
+                              },
+                              {
+                                "type": "text",
+                                "id": "longitude",
+                                "label": "Longitude",
+                                "default": "-123.12927527292057"
+                              }
+              ]
+            }
+    ],
+  "presets": [
+    {
+      "name": "Map location",
+      "blocks": []
+    }
+  ]
+}
+
+{% endschema %}

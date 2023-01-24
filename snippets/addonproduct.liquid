@@ -1,0 +1,198 @@
+{% comment %} <fieldset class="js product-form__input">
+{% for product in product.metafields.custom.add_on_product.value %}
+  <div class="addon">
+  {{product.title}}<br>
+    {%- for option in product.options_with_values -%} 
+    <p>{{ product.variants[forloop.index0].price| money_with_currency}}</p>
+<!--                         <legend class="form__label">{{ option.name }}</legend> -->
+                        {%- for value in option.values -%}
+<!--                           <input type="radio"
+                            {% if forloop.index == 1 %}checked {% endif %}
+                            data-varprice="{{ product.variants[forloop.index0].price}}"
+                            data-varid="{{ product.variants[forloop.index0].id}}" 
+                            class="{{ product.variants[forloop.index0].id}} getvarid" id="{{ product.variants[forloop.index0].id}}"
+                            name="{{product.id}}" value="">
+                          <label for="{{ product.variants[forloop.index0].id}}">
+                            {{ value }}
+                          </label> -->
+                            <label for="quantity">Quantity</label>
+                            <input type="number" data-valuee="{{ product.variants[forloop.index0].id}}" 
+                            class="quantity1" id="quantity" name="quantity" min="0" max="">
+                        {%- endfor -%}  
+                              <input type="hidden" class="multi_vprice" value="">
+     {%- endfor -%}
+
+  </div><hr>
+{% endfor %}
+</fieldset>
+
+
+
+     <select name="{{ product.id }}" id="{{ product.id }}" >
+        <option value="{{ product.variants[forloop.index0].title}}">{{ product.variants[forloop.index0].title}}</option>
+     </select>
+
+
+ {% endcomment %}
+
+
+
+
+
+
+
+
+{% for product in product.metafields.custom.add_on_product.value %}
+  <div class="main" >
+  <input type="hidden" data-hpid="{{ product.id}}" class="productid" value="0">
+  {{product.title}}
+
+    <div class="optionali">
+      {% if product.has_only_default_variant %}
+      <select name="{{ product.id }}" class="itoptn hidee" id="{{ product.id }}" >
+          {% for variant in product.variants %}
+            <option {% if forloop.index == 1 %}selected {% endif %} id="{{ variant.id}}" data-vid="{{ variant.id}}" value="{{ variant.id}}">{{ variant.title}}</option>
+          {% endfor %}
+      </select><br>
+      {% else %}
+      <select name="{{ product.id }}" class="itoptn" id="{{ product.id }}" >
+          {% for variant in product.variants %}
+            <option {% if forloop.index == 1 %}selected {% endif %} id="{{ variant.id}}" data-vid="{{ variant.id}}" value="{{ variant.id}}">{{ variant.title}}</option>
+          {% endfor %}
+      </select><br>
+      {% endif %}
+    </div>
+
+  <div class="radioali">
+   
+   {% for variant in product.variants %}
+     
+     <div class="asdsa">
+     {{ variant.price | money_without_trailing_zeros }}
+     <label for="{{ variant.id }}">{{ variant.title }}</label>
+     <input type="radio" {% if forloop.index == 1 %}checked {% endif %} data-vvid="{{ variant.id }}" class="inptradio" id="{{ variant.id }}" name="{{ product.id }}">   
+     <div class="item-submission">
+       <input type="hidden" name="id" value="{{ variant.id }}"/>
+       <input type="number" data-pid="{{ product.id }}" data-price="{{ variant.price | money_without_trailing_zeros | remove: "Rs. " }}" class="numbr" name="quantity" inputmode="numeric" value="0">
+     </div>
+     </div>
+   {% endfor %}
+  </div>
+  
+  </div>
+  <hr>
+{% endfor %}
+
+  <input type="submit" class="addtocart" value="Add to cart">
+  <p class="">Total Price:<span class="totlprc"></span> </p>
+<script>
+
+  $('.numbr').click(function(){
+   var prc = $(this).data('price');
+   var val = $(this).val();
+   var total = prc * val;
+   var pid = $(this).data('pid');
+   $(".productid").each(function(){
+    var hpid = $(this).data('hpid');
+     if(hpid == pid){
+       $(this).val(total);
+     }
+   })
+  })
+
+  $('.numbr').click(function(){
+  var total = 0;
+  $(".productid").each(function(){
+  total = total + Number( $(this).val() );
+  $('.totlprc').html(total);
+  });
+  });
+
+     
+  $('.addtocart').click(function(){
+    let items = [];
+    let rows = document.querySelectorAll('.item-submission');
+    for(let i=0; i<rows.length; i++) {
+      let itemData = rows[i];
+      let id = parseInt(itemData.querySelector('[name="id"]').value );
+      let qty = parseInt(itemData.querySelector('[name="quantity"]').value );
+      if(id && qty > 0){
+        items.push({ id: id, quantity: qty });
+      }
+    }
+    if(!items.length){
+      alert('chak rapiyaa');
+      return;
+    }
+
+      $.ajax({
+        type: "POST",
+        url: "/cart/add.js",
+        data: {items: items},
+        dataType: "json",
+        success: function(){
+        alert();
+        }  
+      });
+  
+});
+
+
+  $(".itoptn").each(function(){
+    var valuu = $(this).children('option:selected').data('vid');
+    var idd=[];
+    $(".inptradio").each(function(){
+    idd = $(this).attr('data-vvid');
+    if(valuu == idd){
+      $(this).trigger('click');
+      $(this).parent().addClass('active').siblings().removeClass('active');
+    }
+    });
+  });
+
+ 
+  $('.itoptn').change(function(){
+    $(this).attr("selected","selected").siblings().prop("selected", false);
+    var dsfd = $(this);
+    var valuu = $(this).children('option:selected').data('vid');
+    var idd=[];
+    $(".inptradio").each(function(){
+    idd = $(this).attr('data-vvid');
+    if(valuu == idd){
+      $(this).trigger('click');
+      $(this).parent().addClass('active').siblings().removeClass('active');
+    }
+    });
+  });
+                                         
+
+  $('.inptradio').click(function(){
+  $( this ).attr( 'checked', true ).siblings().attr( 'checked', false );
+  })
+  
+        
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
