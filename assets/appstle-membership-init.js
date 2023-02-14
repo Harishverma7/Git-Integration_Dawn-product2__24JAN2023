@@ -15,7 +15,7 @@
         };
         document.getElementsByTagName("head")[0].appendChild(script)
       };
-      appstleLoadScript("https://cdn.shopify.com/s/files/1/0600/4038/0594/t/15/assets/appstle-membership.js?v=1669876040");
+      appstleLoadScript("https://cdn.shopify.com/s/files/1/0600/4038/0594/t/21/assets/appstle-membership.js?v=1676361757");
 
       window.AM = Window.AM || {};
       AM.Config = {
@@ -40,7 +40,7 @@
         "api_key": "NkNJoavjiCLu",
         "showTooltipOnClick": "false",
         "tooltipDesctiption": "<strong>Have complete control of your memberships<\/strong><br\/><br\/>Skip, reschedule, edit, cancel deliveries anytime matching your needs.",
-        "tooltipDescriptionOnPrepaidPlan": "<b>Prepaid Plan Details<\/b><\/br> Total price: {{totalPrice}} ( Price for every delivery: {{pricePerDelivery}})",
+        "tooltipDescriptionOnPrepaidPlan": "<b>Prepaid Plan Details<\/b><\/br> Total price: {{{totalPrice}}} ( Price for every delivery: {{{pricePerDelivery}}})",
         "tooltipDescriptionOnMultipleDiscount": "<b>Discount Details<\/b><\/br> Initial discount is {{discountOne}} and then {{discountTwo}}",
         "tooltipDescriptionCustomization": "{{{defaultTooltipDescription}}} <\/br>  {{{prepaidDetails}}} <\/br> {{{discountDetails}}}",
         "orderStatusManageSubscriptionTitle": "Membership",
@@ -59,7 +59,7 @@
         "showSubOptionBeforeOneTime": false,
         "showStaticTooltip": false,
         "showAppstleLink": false,
-        "sellingPlanTitleText" : "{{sellingPlanName}} ({{sellingPlanPrice}}\/delivery)",
+        "sellingPlanTitleText" : "{{sellingPlanName}} ({{{sellingPlanPrice}}}\/delivery)",
         "oneTimePriceText" : "{{price}}",
         "selectedPayAsYouGoSellingPlanPriceText" : "{{price}}",
         "selectedPrepaidSellingPlanPriceText" : "{{pricePerDelivery}}",
