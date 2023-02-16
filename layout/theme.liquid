@@ -228,9 +228,15 @@
 
 
 
-{% for blog in blogs %}
-  {{ blog.title }}
-{% endfor %}
+{% for article in blog.articles %}
+      <a href="{{ article.url }}"
+        <div><img src="{{ article.image | img_url: 'master' }}"></div>    
+        <div><span> {{ article.published_at | date: "%d %b"  }} </span><span>by {{ article.author }}</span><span class=""> / {{ blog.title }}</span></div>
+        <h2>{{ article.title | strip_html | truncate: 45}}</h2>
+        <p>{{ article.content | strip_html | truncate: 120 }}</p>
+      </a>
+      {{ article.tags }}
+    {% endfor %}
 
 
 
