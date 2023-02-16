@@ -228,7 +228,8 @@
 
 
 
-{% for article in blog.articles %}
+{% for blog in blogs %}
+  {% for article in blog.articles %}
       <a href="{{ article.url }}"
         <div><img src="{{ article.image | img_url: 'master' }}"></div>    
         <div><span> {{ article.published_at | date: "%d %b"  }} </span><span>by {{ article.author }}</span><span class=""> / {{ blog.title }}</span></div>
@@ -237,6 +238,7 @@
       </a>
       {{ article.tags }}
     {% endfor %}
+{% endfor %}
 
 
 
