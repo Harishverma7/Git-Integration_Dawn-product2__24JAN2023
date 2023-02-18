@@ -15,7 +15,7 @@
         };
         document.getElementsByTagName("head")[0].appendChild(script)
       };
-      appstleLoadScript("https://cdn.shopify.com/s/files/1/0600/4038/0594/t/21/assets/appstle-membership.js?v=1676361757");
+      appstleLoadScript("https://cdn.shopify.com/s/files/1/0600/4038/0594/t/21/assets/appstle-membership.js?v=1676716033");
 
       window.AM = Window.AM || {};
       AM.Config = {
@@ -79,6 +79,7 @@
         "productPagePriceDescriptionBlockParentSelector": "",
         "priceBlockSelector": "",
         "parentSelector": "",
+        "reBuyEnabled": "false",
         "css": {
             "appstle_membership_widget": {
                 "margin-top": "" ,
@@ -149,3 +150,4 @@
     }
   }
 )(window);
+
