@@ -799,6 +799,5 @@ $.ajax({
     type: 'POST',
     success: function(result) {
         console.log(result);
-        alert('Congratulation');
     }
 });
