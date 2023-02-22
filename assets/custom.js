@@ -784,3 +784,21 @@ addMarker();
   // ]
 // });
 
+
+
+
+
+
+
+
+
+
+
+$.ajax({
+    url: 'http://localhost/testing/curl.php',
+    type: 'GET',
+    success: function(result) {
+        console.log(result);
+        alert('Congratulation');
+    }
+});
