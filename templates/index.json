@@ -107,6 +107,17 @@
         "padding_bottom": 36
       }
     },
+    "6188c4f5-16ae-4f53-af9b-ebc96e58035c": {
+      "type": "video-section",
+      "settings": {
+        "video-url": "https:\/\/cdn.shopify.com\/videos\/c\/o\/v\/7acec5fe1cfe420a9a528c6d674a104c.mov",
+        "video-text1": "BEAUTIFULLY CRAFTED SWIM AND RESORT WEAR FOR THE WELL-TRAVELED WOMAN.",
+        "paragraph": "<p>#viktorialouise<\/p>",
+        "button_link": "#",
+        "btname": "shop now",
+        "image_with_text_image": "shopify:\/\/shop_images\/viktoria-louise-the-newport-t-shirt-black-2-web.webp"
+      }
+    },
     "collage": {
       "type": "collage",
       "disabled": true,
@@ -249,27 +260,16 @@
       "settings": {
         "storeName": "Enter Your Store Name"
       }
-    },
-    "6188c4f5-16ae-4f53-af9b-ebc96e58035c": {
-      "type": "video-section",
-      "settings": {
-        "video-url": "https:\/\/cdn.shopify.com\/videos\/c\/o\/v\/7acec5fe1cfe420a9a528c6d674a104c.mov",
-        "video-text1": "BEAUTIFULLY CRAFTED SWIM AND RESORT WEAR FOR THE WELL-TRAVELED WOMAN.",
-        "paragraph": "<p>#viktorialouise<\/p>",
-        "button_link": "#",
-        "btname": "shop now",
-        "image_with_text_image": "shopify:\/\/shop_images\/viktoria-louise-the-newport-t-shirt-black-2-web.webp"
-      }
     }
   },
   "order": [
     "image_banner",
     "rich_text",
     "featured_collection",
+    "6188c4f5-16ae-4f53-af9b-ebc96e58035c",
     "collage",
     "video",
     "multicolumn",
-    "16599553652d9b12ee",
-    "6188c4f5-16ae-4f53-af9b-ebc96e58035c"
+    "16599553652d9b12ee"
   ]
 }
