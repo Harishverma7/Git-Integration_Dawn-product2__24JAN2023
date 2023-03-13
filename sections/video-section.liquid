@@ -9,19 +9,7 @@
     </div>
 </div>
 
-<style>
-.containerX { position:relative; }
-.containerX video {
-    position:relative;
-    z-index:0;
-}
-.overlay {
-    position:absolute;
-    top:0;
-    left:0;
-    z-index:1;
-}
-</style>
+
 
 {% schema %}
 {
@@ -30,28 +18,20 @@
     {
       "id": "video-url",
       "type": "text",
-      "label": "Heading",
+      "label": "Video Link",
 		"default": "https://cdn.shopify.com/s/files/1/0059/4709/7188/files/Sequence01_1.mp4?v=1586984148"
     },
     {
       "id": "video-text1",
       "type": "text",
-      "label": "Overlay Text 1",
-      "default": "BALANCE"
+      "label": "Heading",
+      "default": "BEAUTIFULLY CRAFTED SWIM AND RESORT WEAR FOR THE WELL-TRAVELED WOMAN."
     },
     {
-      "id": "video-text2",
-      "type": "text",
-      "label": "Overlay Text 2",
-      "default": "~RELEASE"
-    },
-    {
-      "id": "video-text3",
-      "type": "text",
-      "label": "Overlay Text 3",
-      "default": "RESTORE"
+      "type": "richtext",
+      "id": "paragraph",
+      "label": "Text"
     }
-
   ],
   "presets": [
     {
