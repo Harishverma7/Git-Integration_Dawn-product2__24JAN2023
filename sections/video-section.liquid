@@ -1,12 +1,63 @@
+<div class="containerX">
+    <video autoplay id="video" width="100%">
+        <source src="{{ section.settings.video-url }}" type="video/mp4" />
+    </video>
+    <div class="overlay">
+        <p>{{ section.settings.video-text1 }}</p>
+        <p>{{ section.settings.video-text2 }}</p>
+        <p>{{ section.settings.video-text3 }}</p>
+    </div>
+</div>
+
+<style>
+.containerX { position:relative; }
+.containerX video {
+    position:relative;
+    z-index:0;
+}
+.overlay {
+    position:absolute;
+    top:0;
+    left:0;
+    z-index:1;
+}
+</style>
+
 {% schema %}
-  {
-    "name": "Section name",
-    "settings": []
-  }
+{
+  "name": "New Video Section",
+  "settings": [
+    {
+      "id": "video-url",
+      "type": "text",
+      "label": "Heading",
+		"default": "https://cdn.shopify.com/s/files/1/0059/4709/7188/files/Sequence01_1.mp4?v=1586984148"
+    },
+    {
+      "id": "video-text1",
+      "type": "text",
+      "label": "Overlay Text 1",
+      "default": "BALANCE"
+    },
+    {
+      "id": "video-text2",
+      "type": "text",
+      "label": "Overlay Text 2",
+      "default": "~RELEASE"
+    },
+    {
+      "id": "video-text3",
+      "type": "text",
+      "label": "Overlay Text 3",
+      "default": "RESTORE"
+    }
+
+  ],
+  "presets": [
+    {
+      "name": "Video Section",
+      "category": "Video"
+    }
+  ]
+}
 {% endschema %}
-
-{% stylesheet %}
-{% endstylesheet %}
-
-{% javascript %}
-{% endjavascript %}
