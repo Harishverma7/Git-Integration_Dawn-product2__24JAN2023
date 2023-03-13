@@ -254,7 +254,11 @@
       "type": "video-section",
       "settings": {
         "video-url": "https:\/\/cdn.shopify.com\/videos\/c\/o\/v\/7acec5fe1cfe420a9a528c6d674a104c.mov",
-        "video-text1": "BALANCE"
+        "video-text1": "BEAUTIFULLY CRAFTED SWIM AND RESORT WEAR FOR THE WELL-TRAVELED WOMAN.",
+        "paragraph": "<p>#viktorialouise<\/p>",
+        "button_link": "#",
+        "btname": "shop now",
+        "image_with_text_image": "shopify:\/\/shop_images\/viktoria-louise-the-newport-t-shirt-black-2-web.webp"
       }
     }
   },
