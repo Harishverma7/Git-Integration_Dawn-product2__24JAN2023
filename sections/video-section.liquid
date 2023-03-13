@@ -1,13 +1,23 @@
-<div class="containerX">
-    <video autoplay id="video" width="100%">
-        <source src="{{ section.settings.video-url }}" type="video/mp4" />
-    </video>
-    <div class="overlay">
-        <p>{{ section.settings.video-text1 }}</p>
-        <p>{{ section.settings.video-text2 }}</p>
-        <p>{{ section.settings.video-text3 }}</p>
+<div class="hero">
+  <div class="hero-grid">
+    <div class="col-left">
+      <video muted="" autoplay="" playsinline="" loop="" class="video" style="object-position: 35% 50%">
+        <source src="{{ section.settings.video-url }}" type="video/mp4">
+      </video>
+      <div class="text">
+        <h1>{{ section.settings.text }}<span>{{ section.settings.paragraph }}</span></h1>
+        <div class="button-wrapper">
+          <a href="{{ section.settings.button_link }}" class="cta">{{ section.settings.btname }}<span class="arrow"></span></a>
+        </div>
+      </div>
     </div>
+    <div class="col-right">
+     <img src="{{ section.settings.image_with_text_image| img_url : 'master' }}">
+    </div>
+  </div>
 </div>
+
+
 
 
 
@@ -19,7 +29,7 @@
       "id": "video-url",
       "type": "text",
       "label": "Video Link",
-		"default": "https://cdn.shopify.com/s/files/1/0059/4709/7188/files/Sequence01_1.mp4?v=1586984148"
+      "default": "https://cdn.shopify.com/s/files/1/0059/4709/7188/files/Sequence01_1.mp4?v=1586984148"
     },
     {
       "id": "video-text1",
@@ -31,6 +41,22 @@
       "type": "richtext",
       "id": "paragraph",
       "label": "Text"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "id": "btname",
+      "type": "text",
+      "label": "Button Label",
+      "default": "shop now"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_with_text_image",
+      "label": "Image"
     }
   ],
   "presets": [
