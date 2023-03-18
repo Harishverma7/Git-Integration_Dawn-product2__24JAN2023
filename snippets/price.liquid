@@ -95,15 +95,3 @@
 
 
 
-{% if template == 'product' %}
-      {{ 'products.product.on_sale' | t }}
-    {% else %}      
-      {% assign percentage = 0 %}
-      {% for variant in product.variants %}
-      {% assign saving = variant.compare_at_price | minus: variant.price | times: 100 | divided_by: variant.compare_at_price | round %}
-      {% assign percentage = saving | at_least: percentage %}
-      {% endfor %} 
-
-
-      Save up to {{ percentage }}%
-    {% endif %}
