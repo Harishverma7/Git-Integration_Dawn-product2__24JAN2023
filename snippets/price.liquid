@@ -91,3 +91,20 @@
     </span>
   {%- endif -%}
 </div>
+
+
+
+
+{% if template == 'product' %}
+      {{ 'products.product.on_sale' | t }}
+    {% else %}
+      {% assign amount = 0 %}
+      {% for variant in product.variants %}
+      {% assign saving = variant.compare_at_price | minus: variant.price %}
+      {% assign amount = saving | at_least: amount %}
+      {% endfor %} 
+      {% capture saved_amount %}{{ amount | money_without_trailing_zeros }}{% endcapture %}
+
+
+      Save up to {{ saved_amount }}
+    {% endif %}
