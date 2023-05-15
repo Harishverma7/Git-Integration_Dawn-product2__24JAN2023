@@ -15,7 +15,7 @@
         };
         document.getElementsByTagName("head")[0].appendChild(script)
       };
-      appstleLoadScript("https://cdn.shopify.com/s/files/1/0600/4038/0594/t/21/assets/appstle-membership.js?v=1677867389");
+      appstleLoadScript("https://cdn.shopify.com/s/files/1/0600/4038/0594/t/21/assets/appstle-membership.js?v=1684147507");
 
       window.AM = Window.AM || {};
       AM.Config = {
@@ -53,6 +53,7 @@
         "rulesByCustomerTag": "{\"30-days-subscription\":[\"[{\\\"rule\\\":\\\"element\\\",\\\"selector\\\":\\\".product-form__submit\\\",\\\"message\\\":\\\"\\\",\\\"path\\\":\\\"\\\",\\\"pathMatch\\\":\\\"contains\\\",\\\"discountCode\\\":\\\"\\\",\\\"discountMessage\\\":\\\"\\\",\\\"discountUrl\\\":\\\"\\\",\\\"deliveryFrequency\\\":\\\"Monthly\\\",\\\"limitAccessType\\\":\\\"atc\\\",\\\"elementRestrictType\\\":\\\"url\\\",\\\"bucketCategory\\\":\\\"tags\\\",\\\"bucketCategoryValue\\\":\\\"\\\",\\\"discountCodeText\\\":\\\"\\\",\\\"discountPercentage\\\":\\\"\\\",\\\"discountAmount\\\":\\\"\\\",\\\"discountCodeDetails\\\":\\\"\\\"}]\"]}",
         "membershipByCustomerTag": "{\"30-days-subscription\":[{\"id\":4032,\"shop\":\"hverma1.myshopify.com\",\"groupName\":\"30 Days Subscription\",\"subscriptionId\":369524914,\"productCount\":0,\"productVariantCount\":0,\"infoJson\":\"{\\\"id\\\":369524914,\\\"productCount\\\":0,\\\"productVariantCount\\\":null,\\\"subscriptionPlans\\\":[{\\\"frequencyCount\\\":30,\\\"frequencyInterval\\\":\\\"DAY\\\",\\\"billingFrequencyCount\\\":30,\\\"billingFrequencyInterval\\\":\\\"DAY\\\",\\\"frequencyName\\\":\\\"30 Days\\\",\\\"discountOffer\\\":10.0,\\\"discountOffer2\\\":null,\\\"afterCycle1\\\":0,\\\"afterCycle2\\\":null,\\\"discountType\\\":\\\"PERCENTAGE\\\",\\\"discountType2\\\":null,\\\"discountEnabled\\\":true,\\\"discountEnabled2\\\":null,\\\"discountEnabledMasked\\\":true,\\\"discountEnabled2Masked\\\":null,\\\"id\\\":\\\"gid:\/\/shopify\/SellingPlan\/1538261170\\\",\\\"frequencyType\\\":\\\"ON_PURCHASE_DAY\\\",\\\"specificDayValue\\\":null,\\\"specificDayEnabled\\\":false,\\\"maxCycles\\\":null,\\\"minCycles\\\":null,\\\"cutOff\\\":0,\\\"prepaidFlag\\\":\\\"false\\\",\\\"idNew\\\":\\\"gid:\/\/shopify\/SellingPlan\/1538261170\\\",\\\"planType\\\":\\\"PAY_AS_YOU_GO\\\",\\\"deliveryPolicyPreAnchorBehavior\\\":\\\"ASAP\\\"}],\\\"groupName\\\":\\\"30 Days Subscription\\\",\\\"productIds\\\":\\\"[]\\\",\\\"productId\\\":null,\\\"variantIds\\\":\\\"[{\\\\\\\"id\\\\\\\":42243166175410,\\\\\\\"title\\\\\\\":\\\\\\\"10LB Rogue Echo Pair V2 - Default Title\\\\\\\"}]\\\",\\\"accessoryProductIds\\\":null,\\\"customerTag\\\":\\\"30-days-subscription\\\",\\\"orderTag\\\":\\\"30 Days Subscription\\\",\\\"rulesJson\\\":\\\"[{\\\\\\\"rule\\\\\\\":\\\\\\\"element\\\\\\\",\\\\\\\"selector\\\\\\\":\\\\\\\".product-form__submit\\\\\\\",\\\\\\\"message\\\\\\\":\\\\\\\"\\\\\\\",\\\\\\\"path\\\\\\\":\\\\\\\"\\\\\\\",\\\\\\\"pathMatch\\\\\\\":\\\\\\\"contains\\\\\\\",\\\\\\\"discountCode\\\\\\\":\\\\\\\"\\\\\\\",\\\\\\\"discountMessage\\\\\\\":\\\\\\\"\\\\\\\",\\\\\\\"discountUrl\\\\\\\":\\\\\\\"\\\\\\\",\\\\\\\"deliveryFrequency\\\\\\\":\\\\\\\"Monthly\\\\\\\",\\\\\\\"limitAccessType\\\\\\\":\\\\\\\"atc\\\\\\\",\\\\\\\"elementRestrictType\\\\\\\":\\\\\\\"url\\\\\\\",\\\\\\\"bucketCategory\\\\\\\":\\\\\\\"tags\\\\\\\",\\\\\\\"bucketCategoryValue\\\\\\\":\\\\\\\"\\\\\\\",\\\\\\\"discountCodeText\\\\\\\":\\\\\\\"\\\\\\\",\\\\\\\"discountPercentage\\\\\\\":\\\\\\\"\\\\\\\",\\\\\\\"discountAmount\\\\\\\":\\\\\\\"\\\\\\\",\\\\\\\"discountCodeDetails\\\\\\\":\\\\\\\"\\\\\\\"}]\\\",\\\"formFieldsJson\\\":\\\"[{\\\\\\\"label\\\\\\\":\\\\\\\"\\\\\\\",\\\\\\\"type\\\\\\\":\\\\\\\"text\\\\\\\",\\\\\\\"required\\\\\\\":false,\\\\\\\"visible\\\\\\\":false}]\\\"}\",\"productIds\":\"\",\"variantIds\":\"42243166175410\",\"variantProductIds\":\"7406009614514\",\"customerTag\":\"30-days-subscription\",\"orderTag\":\"30 Days Subscription\",\"rulesJson\":\"[{\\\"rule\\\":\\\"element\\\",\\\"selector\\\":\\\".product-form__submit\\\",\\\"message\\\":\\\"\\\",\\\"path\\\":\\\"\\\",\\\"pathMatch\\\":\\\"contains\\\",\\\"discountCode\\\":\\\"\\\",\\\"discountMessage\\\":\\\"\\\",\\\"discountUrl\\\":\\\"\\\",\\\"deliveryFrequency\\\":\\\"Monthly\\\",\\\"limitAccessType\\\":\\\"atc\\\",\\\"elementRestrictType\\\":\\\"url\\\",\\\"bucketCategory\\\":\\\"tags\\\",\\\"bucketCategoryValue\\\":\\\"\\\",\\\"discountCodeText\\\":\\\"\\\",\\\"discountPercentage\\\":\\\"\\\",\\\"discountAmount\\\":\\\"\\\",\\\"discountCodeDetails\\\":\\\"\\\"}]\",\"formFieldsJson\":\"[{\\\"label\\\":\\\"\\\",\\\"type\\\":\\\"text\\\",\\\"required\\\":false,\\\"visible\\\":false}]\",\"savedSearchId\":null,\"savedSegmentSearchId\":\"gid:\/\/shopify\/Segment\/417062846642\"}]}",
         "nonMemberOnlySellingPlansJson": {},
+        "sellingPlansJson": [{"frequencyCount":30,"frequencyInterval":"DAY","billingFrequencyCount":30,"billingFrequencyInterval":"DAY","frequencyName":"30 Days","discountOffer":10.0,"afterCycle1":0,"discountType":"PERCENTAGE","discountEnabled":true,"discountEnabledMasked":true,"id":"gid://shopify/SellingPlan/1538261170","frequencyType":"ON_PURCHASE_DAY","specificDayEnabled":false,"cutOff":0,"prepaidFlag":"false","idNew":"gid://shopify/SellingPlan/1538261170","planType":"PAY_AS_YOU_GO","deliveryPolicyPreAnchorBehavior":"ASAP","freeTrialEnabled":false}],
         "widgetEnabled": true,
         "showTooltip" : true,
         "sortByDefaultSequence": false,
@@ -63,7 +64,7 @@
         "oneTimePriceText" : "{{{price}}}",
         "selectedPayAsYouGoSellingPlanPriceText" : "{{{price}}}",
         "selectedPrepaidSellingPlanPriceText" : "{{{pricePerDelivery}}}",
-        "selectedDiscountFormat" : "SAVE {{selectedDiscountPercentage}}",
+        "selectedDiscountFormat" : "SAVE {{{selectedDiscountPercentage}}}",
         "manageSubscriptionBtnFormat" : "<a href='apps\/memberships' class='appstle_manageSubBtn' ><button class='btn' style='padding: 2px 20px'>Manage Membership<\/button><a><br><br>",
         "manageSubscriptionUrl" : "apps\/memberships",
         "appstlePlanId": 1,
@@ -80,6 +81,7 @@
         "priceBlockSelector": "",
         "parentSelector": "",
         "reBuyEnabled": "false",
+        "switchRadioButtonWidget": false,
         "enableAddJSInterceptor": false,
         "css": {
             "appstle_membership_widget": {
