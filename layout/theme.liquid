@@ -272,5 +272,13 @@
     {%- endif -%}
    {% include 'smile-initializer' %}
 
+
+<div>
+  {% for product in collections.all.products limit: 8 %}
+  {{ product.id }}
+  {% endfor %}
+</div>
+
+    
 </body>
 </html>
