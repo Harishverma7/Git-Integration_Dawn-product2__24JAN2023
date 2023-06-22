@@ -274,7 +274,7 @@
 
 
 <div>
-  {% for product in collections.all.products limit: 8 %}
+  {% for product in collection.metafields.custom.products %}
   {{ product.id }}
   {% endfor %}
 </div>
