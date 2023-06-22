@@ -217,6 +217,14 @@
   </head>
 
   <body class="gradient">
+
+    <div>
+  {% for product in collection.metafields.custom.products.value %}
+  {{ product.id }}
+  {% endfor %}
+  {{ collection.metafields.custom.products }}
+</div>
+    
     <a class="skip-to-content-link button visually-hidden" href="#MainContent">
       {{ "accessibility.skip_to_text" | t }}
     </a>
@@ -273,12 +281,7 @@
    {% include 'smile-initializer' %}
 
 
-<div>
-  {% for product in collection.metafields.custom.products.value %}
-  {{ product.id }}
-  {% endfor %}
-  {{ collection.metafields.custom.products }}
-</div>
+
 
     
 </body>
