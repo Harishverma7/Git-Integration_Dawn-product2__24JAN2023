@@ -29,7 +29,7 @@
     "6a713807-83bc-4477-a3a7-2d4d4dc80a1c": {
       "type": "custom-liquid",
       "settings": {
-        "custom_liquid": "{% for product in collection.metafields.custom.products.value %}\n  <div>\n    <h3>{{ product.title }}<\/h3>\n    <p>{{ product.description }}<\/p>\n{% for image in product.images %}\n    <img src=\"{{ product.image_url }}\" alt=\"{{ product.title }}\">\n{% endfor %}\n    <p>Price: {{ product.price }}<\/p>\n  <\/div>\n{% endfor %}\n<\/div>",
+        "custom_liquid": "{% for product in collection.metafields.custom.products.value %}\n  <div>\n    <h3>{{ product.title }}<\/h3>\n    <p>{{ product.description }}<\/p>\n{% for image in product.images %}\n    <img src=\"{{ image | img_url: '800x' }}\" alt=\"{{ product.title }}\">\n{% endfor %}\n    <p>Price: {{ product.price }}<\/p>\n  <\/div>\n{% endfor %}\n<\/div>",
         "color_scheme": "background-1",
         "padding_top": 40,
         "padding_bottom": 52
