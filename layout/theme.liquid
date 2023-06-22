@@ -219,10 +219,14 @@
   <body class="gradient">
 
     <div>
-  {% for product in collection.metafields.custom.products.value %}
-  {{ product.id }}
-  {% endfor %}
-  {{ collection.metafields.custom.products }}assas
+{% for product in collection.metafields.custom.products %}
+  <div>
+    <h3>{{ product.title }}</h3>
+    <p>{{ product.description }}</p>
+    <img src="{{ product.image_url }}" alt="{{ product.title }}">
+    <p>Price: {{ product.price }}</p>
+  </div>
+{% endfor %}
 </div>
     
     <a class="skip-to-content-link button visually-hidden" href="#MainContent">
