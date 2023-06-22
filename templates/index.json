@@ -1,5 +1,14 @@
 {
   "sections": {
+    "54d6ad53-98a2-4804-aa5b-134e290371ee": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<div>\n  {% for product in collection.metafields.custom.products %}\n  {{ product }}\n  {% endfor %}\n<\/div>",
+        "color_scheme": "background-1",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
     "image_banner": {
       "type": "image-banner",
       "disabled": true,
@@ -263,6 +272,7 @@
     }
   },
   "order": [
+    "54d6ad53-98a2-4804-aa5b-134e290371ee",
     "image_banner",
     "rich_text",
     "featured_collection",
