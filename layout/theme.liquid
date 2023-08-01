@@ -275,7 +275,18 @@
 
 
 <script>
-  alert()
+  function addtocart(){
+  $.ajax({
+  type: 'GET',
+  url: '/cart.js',
+  dataType: 'json',
+  success: function(cart){
+
+    console.log(cart.total_price)
+  }
+});
+}
+addtocart();
 </script>
 
     
