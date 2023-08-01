@@ -275,23 +275,23 @@
 
 
 <script>
-//   function addtocart(){
-//   $.ajax({
-//   type: 'GET',
-//   url: '/cart.js',
-//   dataType: 'json',
-//   success: function(cart){
+  function addtocart(){
+  $.ajax({
+  type: 'GET',
+  url: '/cart.js',
+  dataType: 'json',
+  success: function(cart){
 
-//     console.log(cart.total_price)
-//   }
-// });
-// }
+    console.log(cart.total_price)
+  }
+});
+}
   
-// addtocart();
-//   $('.quantity__button').click(function(){
-//       // alert()
-// addtocart();
-//   })
+addtocart();
+  $('.quantity__button').click(function(){
+      // alert()
+addtocart();
+  })
 </script>
 
     
