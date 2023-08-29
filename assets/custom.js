@@ -340,7 +340,6 @@
         $.ajax({
           type: "POST",
 //           url: "http://localhost/Api/curl1.php",
-          // url: "https://fashionspotonline.com/api/curl1.php",
           url: "https://harish-verma.000webhostapp.com/api/curl1.php",
           data:{"price": price,"width": width,"titll": titll,"img":"https:"+img,"color":color},
           dataType: "json",
