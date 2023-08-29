@@ -788,17 +788,3 @@ addMarker();
 
 
 
-
-
-
-
-
-
-
-$.ajax({
-    url: 'http://localhost/testing/curl.php',
-    type: 'POST',
-    success: function(result) {
-        console.log(result);
-    }
-});
