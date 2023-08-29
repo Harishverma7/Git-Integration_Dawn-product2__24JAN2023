@@ -352,6 +352,7 @@
             var abc = data.product.variants[0].id;
             var product_id = data.product.id;
             console.log(abc);
+            setTimeout(function(){
             jQuery.post('/cart/add.js', {
               quantity: 1,
               id: abc,
@@ -366,7 +367,7 @@
             }, function() {
               // window.location.href = "/cart";
             });
-          }
+          },700);
         });
       });  
     });   
