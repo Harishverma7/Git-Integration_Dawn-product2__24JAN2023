@@ -360,8 +360,9 @@
             }
 
             ).then(data=>{
-              window.location.href = "/cart";
+              console.log('aaa')
             });
+            setTimeout(function(){ window.location.href = "/cart"; }, 7000);
           }
         });
       });  
