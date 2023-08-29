@@ -100,7 +100,6 @@
         $("#step9").hide();
         $("#step1").show();
         $(".cxcxz").show();
-//         $('input:checked').removeAttr('checked','checked');
         var percent = parseFloat(100 / steps)*0;
         animateProgressbar(percent);
       });
