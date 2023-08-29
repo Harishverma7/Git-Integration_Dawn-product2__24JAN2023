@@ -360,7 +360,7 @@
             }
 
             );
-            setTimeout(function(){ window.location.href = "/cart"; }, 3000);
+            setTimeout(function(){ window.location.href = "/cart"; }, 700);
           }
         });
       });  
