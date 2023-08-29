@@ -365,7 +365,7 @@
                 'Uploaded Image': img_url
               }
             }, function() {
-              // window.location.href = "/cart";
+              window.location.href = "/cart";
             }
             );
             },700);
