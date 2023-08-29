@@ -339,8 +339,8 @@
 
         $.ajax({
           type: "POST",
-//        url: "http://localhost/Api/curl1.php",
-          url: "https://harish-verma.000webhostapp.com/api/curl1.php",
+       url: "http://localhost/Api/curl1.php",
+          // url: "https://harish-verma.000webhostapp.com/api/curl1.php",
           data:{"price": price,"width": width,"titll": titll,"img":"https:"+img,"color":color},
           dataType: "json",
           success: function(data){
@@ -471,9 +471,8 @@ $(document).ready(function(){
       fd.append('file',files[0]);
 
       $.ajax({
-//         url: 'http://localhost/Api/upload.php',
-        // url: "https://fashionspotonline.com/api/upload.php",
-        url: "https://harish-verma.000webhostapp.com/api/upload.php",
+        url: 'http://localhost/Api/upload.php',
+        // url: "https://harish-verma.000webhostapp.com/api/upload.php",
         type: 'post',
         data: fd,
         contentType: false,
