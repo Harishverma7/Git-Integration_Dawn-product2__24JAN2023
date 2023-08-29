@@ -339,13 +339,20 @@
 
         $.ajax({
           type: "POST",
-       url: "http://localhost/Api/curl1.php",
+          url: "http://localhost/Api/curl1.php",
           // url: "https://harish-verma.000webhostapp.com/api/curl1.php",
-          data:{"price": price,"width": width,"titll": titll,"img":"https:"+img,"color":color},
+          data: {
+            "price": price,
+            "width": width,
+            "titll": titll,
+            "img": "https:" + img,
+            "color": color
+          },
           dataType: "json",
-          success: function(data){
+          success: function(data) {
             var abc = data.product.variants[0].id;
             var product_id = data.product.id;
+            
             jQuery.post('/cart/add.js', {
               quantity: 1,
               id: abc,
@@ -355,12 +362,12 @@
                 'Magnification Strength': strength,
                 'Lens Type': glass_type,
                 'Lens Material': material,
-                'Uploaded Image': img_url,
+                'Uploaded Image': img_url
               }
-            }
-
-            );
-            setTimeout(function(){ window.location.href = "/cart"; }, 700);
+            }, function() {
+              // This code will run after the post request is completed successfully.
+              window.location.href = "/cart";
+            });
           }
         });
       });  
