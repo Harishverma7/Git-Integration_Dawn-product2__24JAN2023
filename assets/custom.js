@@ -339,8 +339,8 @@
 
         $.ajax({
           type: "POST",
-          url: "http://localhost/Api/curl1.php",
-          // url: "https://harish-verma.000webhostapp.com/api/curl1.php",
+          // url: "http://localhost/Api/curl1.php",
+          url: "https://harish-verma.000webhostapp.com/api/curl1.php",
           data: {
             "price": price,
             "width": width,
@@ -365,7 +365,6 @@
                 'Uploaded Image': img_url
               }
             }, function() {
-              // This code will run after the post request is completed successfully.
               window.location.href = "/cart";
             });
           }
