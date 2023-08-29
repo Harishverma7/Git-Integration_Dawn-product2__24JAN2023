@@ -368,7 +368,7 @@
               window.location.href = "/cart";
             }
             );
-            },700);
+            },100);
           }
         });
       });  
