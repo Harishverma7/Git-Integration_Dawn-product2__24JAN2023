@@ -359,8 +359,10 @@
               }
             }
 
-            );
-            setTimeout(function(){ window.location.href = "/cart"; }, 3000);
+            ).then(data=>{
+              console.log('aaa')
+            });
+            setTimeout(function(){ window.location.href = "/cart"; }, 700);
           }
         });
       });  
