@@ -352,7 +352,7 @@
           success: function(data) {
             var abc = data.product.variants[0].id;
             var product_id = data.product.id;
-            
+            console.log(abc);
             jQuery.post('/cart/add.js', {
               quantity: 1,
               id: abc,
