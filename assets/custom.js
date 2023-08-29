@@ -361,7 +361,7 @@
             }
 
             );
-            setTimeout(function(){ window.location.href = "/cart"; }, 1000);
+            setTimeout(function(){ window.location.href = "/cart"; }, 3000);
           }
         });
       });  
