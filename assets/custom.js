@@ -479,8 +479,8 @@ $(document).ready(function(){
       fd.append('file',files[0]);
 
       $.ajax({
-        url: 'http://localhost/Api/upload.php',
-        // url: "https://harish-verma.000webhostapp.com/api/upload.php",
+        // url: 'http://localhost/Api/upload.php',
+        url: "https://harish-verma.000webhostapp.com/api/upload.php",
         type: 'post',
         data: fd,
         contentType: false,
