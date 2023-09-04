@@ -1,5 +1,23 @@
 {
   "sections": {
+    "169386037467daa4ed": {
+      "type": "apps",
+      "blocks": {
+        "18afd64d-c2b3-4230-8050-9ce468e7071c": {
+          "type": "shopify:\/\/apps\/testing\/blocks\/star_rating\/3d5e1871-22e6-4c07-ae39-e57c15dacf6a",
+          "settings": {
+            "product": "",
+            "colour": "#ff0000"
+          }
+        }
+      },
+      "block_order": [
+        "18afd64d-c2b3-4230-8050-9ce468e7071c"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
     "54d6ad53-98a2-4804-aa5b-134e290371ee": {
       "type": "custom-liquid",
       "settings": {
@@ -11,7 +29,6 @@
     },
     "image_banner": {
       "type": "image-banner",
-      "disabled": true,
       "blocks": {
         "heading": {
           "type": "heading",
@@ -44,6 +61,7 @@
         "text",
         "button"
       ],
+      "disabled": true,
       "settings": {
         "image": "{{ shop.brand.cover_image }}",
         "image_overlay_opacity": 40,
@@ -60,7 +78,6 @@
     },
     "rich_text": {
       "type": "rich-text",
-      "disabled": true,
       "blocks": {
         "heading": {
           "type": "heading",
@@ -80,6 +97,7 @@
         "heading",
         "text"
       ],
+      "disabled": true,
       "settings": {
         "desktop_content_position": "center",
         "content_alignment": "center",
@@ -129,7 +147,6 @@
     },
     "collage": {
       "type": "collage",
-      "disabled": true,
       "blocks": {
         "collection-0": {
           "type": "collection",
@@ -156,6 +173,7 @@
         "product",
         "collection-1"
       ],
+      "disabled": true,
       "settings": {
         "heading": "Multimedia collage",
         "heading_size": "h2",
@@ -182,7 +200,6 @@
     },
     "multicolumn": {
       "type": "multicolumn",
-      "disabled": true,
       "blocks": {
         "column1": {
           "type": "column",
@@ -217,6 +234,7 @@
         "column2",
         "column3"
       ],
+      "disabled": true,
       "settings": {
         "title": "",
         "heading_size": "h1",
@@ -272,6 +290,7 @@
     }
   },
   "order": [
+    "169386037467daa4ed",
     "54d6ad53-98a2-4804-aa5b-134e290371ee",
     "image_banner",
     "rich_text",

@@ -222,12 +222,6 @@
         "settings": {
         }
       },
-      "15706352229161960306": {
-        "type": "shopify:\/\/apps\/slide-cart-sticky-cart-drawer\/blocks\/app-embeded\/41ace2ee-41e6-45af-a9c4-452e6defecc0",
-        "disabled": true,
-        "settings": {
-        }
-      },
       "10910696115237310528": {
         "type": "shopify:\/\/apps\/sticky-cart-slide-cart-drawer\/blocks\/slide-cart-app-embed\/06f96c51-92d4-4ccf-8798-f65ef7359208",
         "disabled": true,
