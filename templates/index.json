@@ -6,7 +6,7 @@
         "18afd64d-c2b3-4230-8050-9ce468e7071c": {
           "type": "shopify:\/\/apps\/testing\/blocks\/star_rating\/3d5e1871-22e6-4c07-ae39-e57c15dacf6a",
           "settings": {
-            "product": "",
+            "product": "bedside-table",
             "colour": "#ff0000"
           }
         }
