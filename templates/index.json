@@ -9,6 +9,7 @@
             "product": "bedside-table",
             "pending": "You're [price] away from free shipping!",
             "added": "You're eligible for Free Shipping!",
+            "battery_message": "",
             "colour": "#ff0000"
           }
         }
@@ -289,15 +290,6 @@
       "settings": {
         "storeName": "Enter Your Store Name"
       }
-    },
-    "e0b5ebf7-07d4-43ae-a686-44e6e5c74569": {
-      "type": "custom-liquid",
-      "settings": {
-        "custom_liquid": "<script>alert('sds')<\/script>",
-        "color_scheme": "background-1",
-        "padding_top": 40,
-        "padding_bottom": 52
-      }
     }
   },
   "order": [
@@ -310,7 +302,6 @@
     "collage",
     "video",
     "multicolumn",
-    "16599553652d9b12ee",
-    "e0b5ebf7-07d4-43ae-a686-44e6e5c74569"
+    "16599553652d9b12ee"
   ]
 }
