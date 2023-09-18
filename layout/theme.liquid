@@ -218,6 +218,14 @@
 
   <body class="gradient {{ template.suffix }}">
 
+    {% if template.suffix == 'custom' %}
+    <style>
+      body{
+        background:black;
+      }
+    </style>
+    {% endif %}
+
     <a class="skip-to-content-link button visually-hidden" href="#MainContent">
       {{ "accessibility.skip_to_text" | t }}
     </a>
