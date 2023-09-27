@@ -21,6 +21,92 @@
         "include_margins": true
       }
     },
+    "ca0d94ee-3f79-44bf-acc4-ca06f98ac254": {
+      "type": "featured-product",
+      "blocks": {
+        "template--16017453482162__ca0d94ee-3f79-44bf-acc4-ca06f98ac254-text-1": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "{{ section.settings.product.vendor }}",
+            "text_style": "uppercase"
+          }
+        },
+        "template--16017453482162__ca0d94ee-3f79-44bf-acc4-ca06f98ac254-title-1": {
+          "type": "title",
+          "settings": {
+            "heading_size": "h2"
+          }
+        },
+        "template--16017453482162__ca0d94ee-3f79-44bf-acc4-ca06f98ac254-text-2": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "{{ section.settings.product.metafields.descriptors.subtitle.value }}",
+            "text_style": "subtitle"
+          }
+        },
+        "template--16017453482162__ca0d94ee-3f79-44bf-acc4-ca06f98ac254-price-1": {
+          "type": "price",
+          "disabled": true,
+          "settings": {
+          }
+        },
+        "template--16017453482162__ca0d94ee-3f79-44bf-acc4-ca06f98ac254-variant_picker-1": {
+          "type": "variant_picker",
+          "disabled": true,
+          "settings": {
+            "picker_type": "button"
+          }
+        },
+        "template--16017453482162__ca0d94ee-3f79-44bf-acc4-ca06f98ac254-quantity_selector-1": {
+          "type": "quantity_selector",
+          "disabled": true,
+          "settings": {
+          }
+        },
+        "template--16017453482162__ca0d94ee-3f79-44bf-acc4-ca06f98ac254-buy_buttons-1": {
+          "type": "buy_buttons",
+          "disabled": true,
+          "settings": {
+            "show_dynamic_checkout": true
+          }
+        },
+        "template--16017453482162__ca0d94ee-3f79-44bf-acc4-ca06f98ac254-share-1": {
+          "type": "share",
+          "disabled": true,
+          "settings": {
+            "share_label": "Share"
+          }
+        },
+        "f431bb3e-4ec5-431d-843c-cf4e5544671d": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--16017453482162__ca0d94ee-3f79-44bf-acc4-ca06f98ac254-text-1",
+        "template--16017453482162__ca0d94ee-3f79-44bf-acc4-ca06f98ac254-title-1",
+        "template--16017453482162__ca0d94ee-3f79-44bf-acc4-ca06f98ac254-text-2",
+        "template--16017453482162__ca0d94ee-3f79-44bf-acc4-ca06f98ac254-price-1",
+        "template--16017453482162__ca0d94ee-3f79-44bf-acc4-ca06f98ac254-variant_picker-1",
+        "template--16017453482162__ca0d94ee-3f79-44bf-acc4-ca06f98ac254-quantity_selector-1",
+        "template--16017453482162__ca0d94ee-3f79-44bf-acc4-ca06f98ac254-buy_buttons-1",
+        "template--16017453482162__ca0d94ee-3f79-44bf-acc4-ca06f98ac254-share-1",
+        "f431bb3e-4ec5-431d-843c-cf4e5544671d"
+      ],
+      "settings": {
+        "product": "custom-glasses",
+        "color_scheme": "background-1",
+        "secondary_background": false,
+        "hide_variants": false,
+        "enable_video_looping": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
     "54d6ad53-98a2-4804-aa5b-134e290371ee": {
       "type": "custom-liquid",
       "settings": {
@@ -112,6 +198,7 @@
     },
     "featured_collection": {
       "type": "featured-collection",
+      "disabled": true,
       "settings": {
         "title": "Featured products",
         "heading_size": "h2",
@@ -294,6 +381,7 @@
   },
   "order": [
     "169386037467daa4ed",
+    "ca0d94ee-3f79-44bf-acc4-ca06f98ac254",
     "54d6ad53-98a2-4804-aa5b-134e290371ee",
     "image_banner",
     "rich_text",
