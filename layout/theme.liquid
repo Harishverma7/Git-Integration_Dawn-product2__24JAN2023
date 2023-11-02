@@ -305,10 +305,11 @@ addtocart();
 
 
 
+
     <script>
 $(document).ready(function() {
-  if ('webkitSpeechRecognition' in window) {
-    const recognition = new window.SpeechRecognition();
+  if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+    const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
     const audioPlayer = $('#audioPlayer')[0];
     const startButton = $('#startRecording');
     const stopButton = $('#stopRecording');
@@ -370,6 +371,7 @@ $(document).ready(function() {
     alert('Speech recognition is not supported in your browser.');
   }
 });
+
 
 
 
