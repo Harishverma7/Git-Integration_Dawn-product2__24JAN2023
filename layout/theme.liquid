@@ -299,20 +299,23 @@ addtocart();
     
 <button id="startRecording">Start Recording</button>
 <button id="stopRecording" disabled>Stop Recording</button>
+<button id="playRecording" disabled>Play Recording</button>
+<audio id="audioPlayer" controls></audio>
 <p id="speechOutput"></p>
 
+
+
     <script>
-      document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
   const recognition = new window.webkitSpeechRecognition || new window.SpeechRecognition();
-
-  recognition.continuous = true;
-  recognition.interimResults = true;
-
+  const audioPlayer = document.getElementById('audioPlayer');
   const startButton = document.getElementById('startRecording');
   const stopButton = document.getElementById('stopRecording');
+  const playButton = document.getElementById('playRecording');
   const speechOutput = document.getElementById('speechOutput');
 
   let isRecording = false;
+  let recordedChunks = [];
 
   startButton.addEventListener('click', () => {
     if (!isRecording) {
@@ -329,7 +332,14 @@ addtocart();
       isRecording = false;
       startButton.disabled = false;
       stopButton.disabled = true;
+      playButton.disabled = false;
     }
+  });
+
+  playButton.addEventListener('click', () => {
+    const audioBlob = new Blob(recordedChunks, { type: 'audio/wav' });
+    audioPlayer.src = URL.createObjectURL(audioBlob);
+    audioPlayer.play();
   });
 
   recognition.onresult = (event) => {
@@ -346,6 +356,12 @@ addtocart();
   recognition.onend = () => {
     if (isRecording) {
       recognition.start();
+    }
+  };
+
+  recognition.ondataavailable = (event) => {
+    if (event.data.size > 0) {
+      recordedChunks.push(event.data);
     }
   };
 });
