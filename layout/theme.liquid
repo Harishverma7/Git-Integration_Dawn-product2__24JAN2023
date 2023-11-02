@@ -307,65 +307,70 @@ addtocart();
 
     <script>
 $(document).ready(function() {
-  const recognition = new window.webkitSpeechRecognition || new window.SpeechRecognition();
-  const audioPlayer = $('#audioPlayer')[0];
-  const startButton = $('#startRecording');
-  const stopButton = $('#stopRecording');
-  const playButton = $('#playRecording');
-  const speechOutput = $('#speechOutput');
+  if ('webkitSpeechRecognition' in window) {
+    const recognition = new window.SpeechRecognition();
+    const audioPlayer = $('#audioPlayer')[0];
+    const startButton = $('#startRecording');
+    const stopButton = $('#stopRecording');
+    const playButton = $('#playRecording');
+    const speechOutput = $('#speechOutput');
 
-  let isRecording = false;
-  let recordedChunks = [];
+    let isRecording = false;
+    let recordedChunks = [];
 
-  startButton.on('click', function() {
-    if (!isRecording) {
-      recognition.start();
-      isRecording = true;
-      startButton.prop('disabled', true);
-      stopButton.prop('disabled', false);
-    }
-  });
-
-  stopButton.on('click', function() {
-    if (isRecording) {
-      recognition.stop();
-      isRecording = false;
-      startButton.prop('disabled', false);
-      stopButton.prop('disabled', true);
-      playButton.prop('disabled', false);
-    }
-  });
-
-  playButton.on('click', function() {
-    const audioBlob = new Blob(recordedChunks, { type: 'audio/wav' });
-    const audioURL = URL.createObjectURL(audioBlob);
-    audioPlayer.src = audioURL;
-    audioPlayer.play();
-  });
-
-  recognition.onresult = function(event) {
-    let interimTranscript = '';
-    for (let i = event.resultIndex; i < event.results.length; i++) {
-      if (event.results[i].isFinal) {
-        speechOutput.text(speechOutput.text() + event.results[i][0].transcript + ' ');
-      } else {
-        interimTranscript += event.results[i][0].transcript + ' ';
+    startButton.on('click', function() {
+      if (!isRecording) {
+        recognition.start();
+        isRecording = true;
+        startButton.prop('disabled', true);
+        stopButton.prop('disabled', false);
       }
-    }
-  };
+    });
 
-  recognition.onend = function() {
-    if (isRecording) {
-      recognition.start();
-    }
-  };
+    stopButton.on('click', function() {
+      if (isRecording) {
+        recognition.stop();
+        isRecording = false;
+        startButton.prop('disabled', false);
+        stopButton.prop('disabled', true);
+        playButton.prop('disabled', false);
+      }
+    });
 
-  recognition.ondataavailable = function(event) {
-    if (event.data.size > 0) {
-      recordedChunks.push(event.data);
-    }
-  };
+    playButton.on('click', function() {
+      const audioBlob = new Blob(recordedChunks, { type: 'audio/wav' });
+      const audioURL = URL.createObjectURL(audioBlob);
+      audioPlayer.src = audioURL;
+      audioPlayer.play();
+    });
+
+    recognition.onresult = function(event) {
+      let interimTranscript = '';
+      for (let i = event.resultIndex; i < event.results.length; i++) {
+        if (event.results[i].isFinal) {
+          speechOutput.text(speechOutput.text() + event.results[i][0].transcript + ' ');
+        } else {
+          interimTranscript += event.results[i][0].transcript + ' ';
+        }
+      }
+    };
+
+    recognition.onend = function() {
+      if (isRecording) {
+        recognition.start();
+      }
+    };
+
+    recognition.ondataavailable = function(event) {
+      if (event.data.size > 0) {
+        recordedChunks.push(event.data);
+      }
+    };
+  } else {
+    alert('Speech recognition is not supported in your browser.');
+  }
 });
+
 
 
     </script>
