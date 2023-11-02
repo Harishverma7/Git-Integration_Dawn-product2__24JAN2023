@@ -306,65 +306,67 @@ addtocart();
 
 
     <script>
-document.addEventListener('DOMContentLoaded', () => {
+$(document).ready(function() {
   const recognition = new window.webkitSpeechRecognition || new window.SpeechRecognition();
-  const audioPlayer = document.getElementById('audioPlayer');
-  const startButton = document.getElementById('startRecording');
-  const stopButton = document.getElementById('stopRecording');
-  const playButton = document.getElementById('playRecording');
-  const speechOutput = document.getElementById('speechOutput');
+  const audioPlayer = $('#audioPlayer')[0];
+  const startButton = $('#startRecording');
+  const stopButton = $('#stopRecording');
+  const playButton = $('#playRecording');
+  const speechOutput = $('#speechOutput');
 
   let isRecording = false;
   let recordedChunks = [];
 
-  startButton.addEventListener('click', () => {
+  startButton.on('click', function() {
     if (!isRecording) {
       recognition.start();
       isRecording = true;
-      startButton.disabled = true;
-      stopButton.disabled = false;
+      startButton.prop('disabled', true);
+      stopButton.prop('disabled', false);
     }
   });
 
-  stopButton.addEventListener('click', () => {
+  stopButton.on('click', function() {
     if (isRecording) {
       recognition.stop();
       isRecording = false;
-      startButton.disabled = false;
-      stopButton.disabled = true;
-      playButton.disabled = false;
+      startButton.prop('disabled', false);
+      stopButton.prop('disabled', true);
+      playButton.prop('disabled', false);
     }
   });
 
-  playButton.addEventListener('click', () => {
+  playButton.on('click', function() {
     const audioBlob = new Blob(recordedChunks, { type: 'audio/wav' });
-    audioPlayer.src = URL.createObjectURL(audioBlob);
+    const audioURL = URL.createObjectURL(audioBlob);
+    audioPlayer.src = audioURL;
     audioPlayer.play();
   });
 
-  recognition.onresult = (event) => {
+  recognition.onresult = function(event) {
     let interimTranscript = '';
     for (let i = event.resultIndex; i < event.results.length; i++) {
       if (event.results[i].isFinal) {
-        speechOutput.textContent += event.results[i][0].transcript + ' ';
+        speechOutput.text(speechOutput.text() + event.results[i][0].transcript + ' ');
       } else {
         interimTranscript += event.results[i][0].transcript + ' ';
       }
     }
   };
 
-  recognition.onend = () => {
+  recognition.onend = function() {
     if (isRecording) {
       recognition.start();
     }
   };
 
-  recognition.ondataavailable = (event) => {
+  recognition.ondataavailable = function(event) {
     if (event.data.size > 0) {
       recordedChunks.push(event.data);
     }
   };
 });
+
 
     </script>
     
