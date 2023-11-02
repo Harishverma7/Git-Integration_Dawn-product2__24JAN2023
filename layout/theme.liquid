@@ -295,6 +295,62 @@ addtocart();
   })
 </script>
 
+
+    
+<button id="startRecording">Start Recording</button>
+<button id="stopRecording" disabled>Stop Recording</button>
+<p id="speechOutput"></p>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+  const recognition = new window.webkitSpeechRecognition || new window.SpeechRecognition();
+
+  recognition.continuous = true;
+  recognition.interimResults = true;
+
+  const startButton = document.getElementById('startRecording');
+  const stopButton = document.getElementById('stopRecording');
+  const speechOutput = document.getElementById('speechOutput');
+
+  let isRecording = false;
+
+  startButton.addEventListener('click', () => {
+    if (!isRecording) {
+      recognition.start();
+      isRecording = true;
+      startButton.disabled = true;
+      stopButton.disabled = false;
+    }
+  });
+
+  stopButton.addEventListener('click', () => {
+    if (isRecording) {
+      recognition.stop();
+      isRecording = false;
+      startButton.disabled = false;
+      stopButton.disabled = true;
+    }
+  });
+
+  recognition.onresult = (event) => {
+    let interimTranscript = '';
+    for (let i = event.resultIndex; i < event.results.length; i++) {
+      if (event.results[i].isFinal) {
+        speechOutput.textContent += event.results[i][0].transcript + ' ';
+      } else {
+        interimTranscript += event.results[i][0].transcript + ' ';
+      }
+    }
+  };
+
+  recognition.onend = () => {
+    if (isRecording) {
+      recognition.start();
+    }
+  };
+});
+
+    </script>
     
 </body>
 </html>
