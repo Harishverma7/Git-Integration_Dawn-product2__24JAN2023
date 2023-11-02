@@ -218,6 +218,18 @@
 
   <body class="ssads gradient {{ template.suffix }}">
 
+    
+<div class="container">
+	<h1>VOICE RECORDING DEMO FTW, BRO</h1>
+	<span>Recorder</span>
+	<audio id="recorder" muted hidden></audio>
+	<div>
+		<button id="start">Record</button>
+		<button id="stop">Stop Recording</button>
+	</div>
+	<span>Saved Recording</span>
+	<audio id="player" controls></audio>
+</div>
 
     <a class="skip-to-content-link button visually-hidden" href="#MainContent">
       {{ "accessibility.skip_to_text" | t }}
@@ -297,17 +309,7 @@ addtocart();
 
 
     
-<div class="container">
-	<h1>VOICE RECORDING DEMO FTW, BRO</h1>
-	<span>Recorder</span>
-	<audio id="recorder" muted hidden></audio>
-	<div>
-		<button id="start">Record</button>
-		<button id="stop">Stop Recording</button>
-	</div>
-	<span>Saved Recording</span>
-	<audio id="player" controls></audio>
-</div>
+
 
 
 
