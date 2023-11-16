@@ -339,7 +339,7 @@
         $.ajax({
           type: "POST",
           // url: "http://localhost/Api/curl1.php",
-          url: "https://harish-verma.000webhostapp.com/api/curl1.php",
+          url: "https://demo.rejoincycles.com/tetsing/api/curl1.php",
           data: {
             "price": price,
             "width": width,
