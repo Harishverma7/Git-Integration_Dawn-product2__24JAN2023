@@ -13,7 +13,7 @@
             "colour": "#ff0000"
           }
         },
-        "30488d22-6122-4323-a94b-e1983dae94c6": {
+        "104c5ffb-18d8-4131-a66e-1b691ff6bee8": {
           "type": "shopify:\/\/apps\/rohan1\/blocks\/star_rating\/db181c81-ee71-4020-9ad4-119719a0e6b0",
           "settings": {
             "name": "Chat bot (Chat GPT)",
@@ -23,7 +23,7 @@
       },
       "block_order": [
         "18afd64d-c2b3-4230-8050-9ce468e7071c",
-        "30488d22-6122-4323-a94b-e1983dae94c6"
+        "104c5ffb-18d8-4131-a66e-1b691ff6bee8"
       ],
       "settings": {
         "include_margins": true
