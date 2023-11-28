@@ -251,7 +251,7 @@
       },
       "15602015450228372233": {
         "type": "shopify:\/\/apps\/chatbot\/blocks\/star_rating\/5d48a557-6034-4b2b-8b80-ec159c1537b5",
-        "disabled": false,
+        "disabled": true,
         "settings": {
           "name": "Chat bot (Chat GPT)",
           "message": "Bot: Hello! 👋 I'm your friendly AI ChatBot assistant. How can I assist you today?"
