@@ -13,7 +13,7 @@
             "colour": "#ff0000"
           }
         },
-        "4fd25b89-986b-4a35-a67f-0568ca91f07e": {
+        "9d0af7b6-f2bd-4202-8a50-42580fbfbb1b": {
           "type": "shopify:\/\/apps\/chatbot\/blocks\/star_rating\/3160e3f8-2468-4d40-9373-f689f9823b55",
           "settings": {
             "name": "Chat bot (Chat GPT)",
@@ -23,7 +23,7 @@
       },
       "block_order": [
         "18afd64d-c2b3-4230-8050-9ce468e7071c",
-        "4fd25b89-986b-4a35-a67f-0568ca91f07e"
+        "9d0af7b6-f2bd-4202-8a50-42580fbfbb1b"
       ],
       "settings": {
         "include_margins": true
