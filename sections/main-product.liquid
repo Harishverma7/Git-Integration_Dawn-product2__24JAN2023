@@ -637,24 +637,6 @@
   </script>
 </section>
 
-aaa
-{% if product.selected_or_first_available_selling_plan_allocation %}
-  <select name="selling_plan" id="selling_plan">
-    {% for variant in product.variants %}
-      {% for allocation in variant.selling_plan_allocations %}
-        <option
-          data-plan-name="{{ allocation.selling_plan.name }}"
-          value="{{ allocation.selling_plan.id }}"
-          price="{{ allocation.price }}"
-        >
-          {{ allocation.selling_plan.name }}
-        </option>
-      {% endfor %}
-    {% endfor %}
-  </select>
-{% endif %}
-                      
-
 {% schema %}
 {
   "name": "t:sections.main-product.name",
