@@ -12,18 +12,10 @@
             "battery_message": "",
             "colour": "#ff0000"
           }
-        },
-        "48a35deb-16a3-410a-971f-fec7d71cf5a4": {
-          "type": "shopify:\/\/apps\/chatbot\/blocks\/star_rating\/3160e3f8-2468-4d40-9373-f689f9823b55",
-          "settings": {
-            "name": "Chat bot (Chat GPT)",
-            "message": "Bot: Hello! 👋 I'm your friendly AI ChatBot assistant. How can I assist you today?"
-          }
         }
       },
       "block_order": [
-        "18afd64d-c2b3-4230-8050-9ce468e7071c",
-        "48a35deb-16a3-410a-971f-fec7d71cf5a4"
+        "18afd64d-c2b3-4230-8050-9ce468e7071c"
       ],
       "settings": {
         "include_margins": true
