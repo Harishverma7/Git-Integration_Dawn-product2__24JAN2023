@@ -2,6 +2,18 @@
   "sections": {
     "169386037467daa4ed": {
       "type": "apps",
+      "blocks": {
+        "ai_chatbot_chatbot_CnYTxU": {
+          "type": "shopify:\/\/apps\/ai-chatbot\/blocks\/chatbot\/963e5fd9-1ad3-444a-94be-74918f6768d3",
+          "settings": {
+            "name": "Chat bot (Chat GPT)",
+            "message": "Bot: Hello! 👋 I'm your friendly AI ChatBot assistant. How can I assist you today?"
+          }
+        }
+      },
+      "block_order": [
+        "ai_chatbot_chatbot_CnYTxU"
+      ],
       "settings": {
         "include_margins": true
       }
