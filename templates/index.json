@@ -25,7 +25,6 @@
         "18afd64d-c2b3-4230-8050-9ce468e7071c",
         "a7b8d32c-3078-4a0c-8249-d48883332138"
       ],
-      "disabled": true,
       "settings": {
         "include_margins": true
       }
@@ -118,6 +117,7 @@
     },
     "54d6ad53-98a2-4804-aa5b-134e290371ee": {
       "type": "custom-liquid",
+      "disabled": true,
       "settings": {
         "custom_liquid": "<div>\n  {% for product in collection.metafields.custom.products %}\n  {{ product }}\n  {% endfor %}\n<\/div>",
         "color_scheme": "background-1",
