@@ -692,7 +692,7 @@ body #step9.step_list5 .smallest {
   border: 6px solid #ccc;
   border-right-color: #186aa9;
   border-radius: 22px;
-  -webkit-animation: rotate 1s infinite linear;
+  /* -webkit-animation: rotate 1s infinite linear; */
 }
 
 @-webkit-keyframes rotate {
