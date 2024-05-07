@@ -339,7 +339,7 @@
         $.ajax({
           type: "POST",
           // url: "http://localhost/Api/curl1.php",
-          url: "hhttps://demo.rejoincycles.com/chatbot/custom/curl1.php",
+          url: "https://demo.rejoincycles.com/chatbot/custom/curl1.php",
           data: {
             "price": price,
             "width": width,
