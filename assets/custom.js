@@ -480,7 +480,7 @@ $(document).ready(function(){
 
       $.ajax({
         // url: 'http://localhost/Api/upload.php',
-        url: "https://demo.rejoincycles.com/tetsing/api/upload.php",
+        url: "https://demo.rejoincycles.com/chatbot/custom/upload.php",
         type: 'post',
         data: fd,
         contentType: false,
