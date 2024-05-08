@@ -1,11 +1,15 @@
-<div class="heroo page-width section_{{ section.id }}">
+<div class="heroo section_{{ section.id }}">
     <div class="col-right sddddd">
      <img src="{{ section.settings.image_with_text_image| img_url : 'master' }}">
     </div>
 </div>
 
 
-
+<style>
+  .sddddd img {
+    width: 100%;
+}
+</style>
 
 
 {% schema %}
