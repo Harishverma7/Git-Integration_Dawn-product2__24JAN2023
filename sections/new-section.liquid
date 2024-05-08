@@ -17,24 +17,21 @@
 
 
 <script>
-var isAppended = false; // Flag to track whether the content has been appended
+
 
 function appendSecondSection() {
-    if (!isAppended) {
-        $.ajax({
-            url: '/#shopify-section-template--16017453482162__new_section_kCRUhF', // Replace '/your-second-section-url' with the actual URL of your second section
-            method: "GET",
-            dataType: "html",
-            success: function(data) {
-                var secondSectionContent = $(data).find("#shopify-section-template--16017453482162__new_section_kCRUhF").html();
-                $('#shopify-section-template--16017453482162__6188c4f5-16ae-4f53-af9b-ebc96e58035c').append(secondSectionContent);
-                isAppended = true; // Set flag to true after content is appended
-            },
-            error: function() {
-                console.log('Please try again');
-            }
-        });
+  $.ajax({
+    url: '/#shopify-section-template--16017453482162__new_section_kCRUhF', // Replace '/your-second-section-url' with the actual URL of your second section
+    method: "GET",
+    dataType: "html",
+    success: function(data) {
+        var secondSectionContent = $(data).find("#shopify-section-template--16017453482162__new_section_kCRUhF").html();
+        $('#shopify-section-template--16017453482162__6188c4f5-16ae-4f53-af9b-ebc96e58035c').append(secondSectionContent);
+    },
+    error: function() {
+        console.log('Please try again');
     }
+});
 }
 $(window).load(function() {
 appendSecondSection();
