@@ -1,6 +1,28 @@
+<div class="heroo page-width section_{{ section.id }}">
+    <div class="col-right sddddd">
+     <img src="{{ section.settings.image_with_text_image| img_url : 'master' }}">
+    </div>
+</div>
+
+
+
+
+
 {% schema %}
-  {
-    "name": "Section name",
-    "settings": []
-  }
+{
+  "name": "New Section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image_with_text_image",
+      "label": "Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "New Section",
+      "category": "Video"
+    }
+  ]
+}
 {% endschema %}
