@@ -28,7 +28,7 @@ function appendSecondSection() {
             var secondSectionContent = $(data).find("#shopify-section-template--16017453482162__new_section_kCRUhF").html();
             var secondSectionElement = document.createElement('div');
             secondSectionElement.innerHTML = secondSectionContent;
-          $(data).find("#shopify-section-template--16017453482162__new_section_kCRUhF").remove();
+            document.querySelector(data).find("#shopify-section-template--16017453482162__new_section_kCRUhF").remove();
             document.querySelector('#shopify-section-template--16017453482162__6188c4f5-16ae-4f53-af9b-ebc96e58035c').appendChild(secondSectionElement);            
         },
         error: function() {
