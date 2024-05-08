@@ -233,6 +233,36 @@
         "image_with_text_image": "shopify:\/\/shop_images\/viktoria-louise-the-newport-t-shirt-black-2-web.webp"
       }
     },
+    "rich_text_phjPhJ": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_atB8QX": {
+          "type": "heading",
+          "settings": {
+            "heading": "<p>Talk about your brand<\/p>",
+            "heading_size": "h1"
+          }
+        },
+        "text_Tc4qDi": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_atB8QX",
+        "text_Tc4qDi"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "background-1",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
     "collage": {
       "type": "collage",
       "blocks": {
@@ -385,6 +415,7 @@
     "rich_text",
     "featured_collection",
     "6188c4f5-16ae-4f53-af9b-ebc96e58035c",
+    "rich_text_phjPhJ",
     "collage",
     "video",
     "multicolumn",
