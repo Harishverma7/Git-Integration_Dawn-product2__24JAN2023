@@ -20,7 +20,6 @@
 var isAppended = false; // Flag to track whether the content has been appended
 
 function appendSecondSection() {
-    // Check if content is already appended before making the AJAX request
     if (!isAppended) {
         $.ajax({
             url: '/#shopify-section-template--16017453482162__new_section_kCRUhF', // Replace '/your-second-section-url' with the actual URL of your second section
@@ -37,10 +36,9 @@ function appendSecondSection() {
         });
     }
 }
-
-// Call the function to append the second section only once
+$(window).load(function() {
 appendSecondSection();
-
+}
 
 </script>
 
