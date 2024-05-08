@@ -375,6 +375,12 @@
       "settings": {
         "storeName": "Enter Your Store Name"
       }
+    },
+    "new_section_kCRUhF": {
+      "type": "new-section",
+      "settings": {
+        "image_with_text_image": "shopify:\/\/shop_images\/1920_x_720_d_4893e338-bfcf-484c-b74f-fe9978c79712.webp"
+      }
     }
   },
   "order": [
@@ -388,6 +394,7 @@
     "collage",
     "video",
     "multicolumn",
-    "16599553652d9b12ee"
+    "16599553652d9b12ee",
+    "new_section_kCRUhF"
   ]
 }
