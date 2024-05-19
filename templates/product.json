@@ -15,6 +15,18 @@
           "settings": {
           }
         },
+        "43eee2e8-5147-4936-83ee-3d0cfe35d5ef": {
+          "type": "shopify:\/\/apps\/audien-reviews\/blocks\/star_rating\/ce002b21-24e0-4d65-87ca-18c9770b24d4",
+          "settings": {
+            "size": 16,
+            "rating_text": "",
+            "rating_hide_text": false,
+            "widget_alignment": "left",
+            "rating_color_for_star": "transparent",
+            "primary_color_for_star": "transparent",
+            "custom_css": ""
+          }
+        },
         "caption": {
           "type": "text",
           "settings": {
@@ -122,9 +134,16 @@
             "share_label": "Share"
           }
         },
-        "43eee2e8-5147-4936-83ee-3d0cfe35d5ef": {
+        "audien_reviews_star_rating_CAikeN": {
           "type": "shopify:\/\/apps\/audien-reviews\/blocks\/star_rating\/ce002b21-24e0-4d65-87ca-18c9770b24d4",
           "settings": {
+            "size": 16,
+            "rating_text": "",
+            "rating_hide_text": false,
+            "widget_alignment": "left",
+            "rating_color_for_star": "transparent",
+            "primary_color_for_star": "transparent",
+            "custom_css": ""
           }
         }
       },
@@ -143,7 +162,8 @@
         "collapsible-row-1",
         "collapsible-row-2",
         "collapsible-row-3",
-        "share"
+        "share",
+        "audien_reviews_star_rating_CAikeN"
       ],
       "settings": {
         "enable_sticky_info": true,
