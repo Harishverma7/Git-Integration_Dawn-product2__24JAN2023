@@ -244,6 +244,12 @@
           "name": "Chat bot (Chat GPT)",
           "message": "Bot: Hello! 👋 I'm your friendly AI ChatBot assistant. How can I assist you today?"
         }
+      },
+      "11901248931489288752": {
+        "type": "shopify:\/\/apps\/audien-reviews\/blocks\/audien-reviews\/ce002b21-24e0-4d65-87ca-18c9770b24d4",
+        "disabled": false,
+        "settings": {
+        }
       }
     }
   },
