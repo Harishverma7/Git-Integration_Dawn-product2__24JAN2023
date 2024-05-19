@@ -15,7 +15,7 @@
           "settings": {
           }
         },
-        "43eee2e8-5147-4936-83ee-3d0cfe35d5ef": {
+        "audien_reviews_star_rating_CAikeN": {
           "type": "shopify:\/\/apps\/audien-reviews\/blocks\/star_rating\/ce002b21-24e0-4d65-87ca-18c9770b24d4",
           "settings": {
             "size": 16,
@@ -54,36 +54,6 @@
           "type": "buy_buttons",
           "settings": {
             "show_dynamic_checkout": true
-          }
-        },
-        "f46f48a4-a2e2-4104-8049-1753e47b42e7": {
-          "type": "shopify:\/\/apps\/growave-loyalty-wishlist\/blocks\/block.product.faveButton\/b3d2efbe-110a-4e27-84a8-1f2ed63996a4",
-          "settings": {
-            "textColor": "",
-            "backgroundColor": "",
-            "iconColor": "",
-            "boxShadow": "",
-            "hoverTextColor": "",
-            "hoverBackgroundColor": "",
-            "hoverBorderColor": "",
-            "hoverBoxShadow": "",
-            "margin": "",
-            "padding": "",
-            "buttonWidth": "",
-            "buttonHeight": "",
-            "mobileBreakpoint": "",
-            "mobileButtonWidth": "",
-            "fontSize": "",
-            "fontWeight": "",
-            "fontFamily": "",
-            "letterSpacing": "",
-            "textTransform": "",
-            "border": "",
-            "borderRadius": "",
-            "favedIconCode": "",
-            "favedIconSize": "",
-            "unFavedIconCode": "",
-            "unFavedIconSize": ""
           }
         },
         "description": {
@@ -133,37 +103,23 @@
           "settings": {
             "share_label": "Share"
           }
-        },
-        "audien_reviews_star_rating_CAikeN": {
-          "type": "shopify:\/\/apps\/audien-reviews\/blocks\/star_rating\/ce002b21-24e0-4d65-87ca-18c9770b24d4",
-          "settings": {
-            "size": 16,
-            "rating_text": "",
-            "rating_hide_text": false,
-            "widget_alignment": "left",
-            "rating_color_for_star": "transparent",
-            "primary_color_for_star": "transparent",
-            "custom_css": ""
-          }
         }
       },
       "block_order": [
         "vendor",
         "title",
-        "43eee2e8-5147-4936-83ee-3d0cfe35d5ef",
+        "audien_reviews_star_rating_CAikeN",
         "caption",
         "price",
         "variant_picker",
         "quantity_selector",
         "buy_buttons",
-        "f46f48a4-a2e2-4104-8049-1753e47b42e7",
         "description",
         "collapsible-row-0",
         "collapsible-row-1",
         "collapsible-row-2",
         "collapsible-row-3",
-        "share",
-        "audien_reviews_star_rating_CAikeN"
+        "share"
       ],
       "settings": {
         "enable_sticky_info": true,
