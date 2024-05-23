@@ -795,3 +795,36 @@ addMarker();
 
 
 
+
+
+
+
+
+
+
+
+
+// <button class="ad_to_cart_coll">addddd </button>
+
+// $('.copy_footer').click(function(){  
+//     var varint = '47602040373580';
+//        $.ajax({
+//         type: "POST",
+//         url: "/cart/add.js",
+//         data: {
+//           id:varint,
+//           quantity:1
+//         },
+//         dataType: "json",
+//         success: function(data) {
+//             var itemqty = data.quantity;
+//             var qtyText = itemqty > 0 ? itemqty : '';
+//             $('.hicon__value span').text(qtyText);
+//             document.documentElement.dispatchEvent(new CustomEvent('cart:refresh', {
+//                 bubbles: true  // this code is for Prestige theme, to refresh the cart
+//             }));
+//             document.querySelector("#sidebar-cart").setAttribute("aria-hidden", "false")
+//         }, 
+//       });
+// })
+
