@@ -339,7 +339,7 @@
         $.ajax({
           type: "POST",
           // url: "http://localhost/Api/curl1.php",
-          url: "https://demo.rejoincycles.com/chatbot/custom/curl1.php",
+          url: "https://targetconstruction.ca/new/curl1.php",
           data: {
             "price": price,
             "width": width,
@@ -480,7 +480,7 @@ $(document).ready(function(){
 
       $.ajax({
         // url: 'http://localhost/Api/upload.php',
-        url: "https://demo.rejoincycles.com/chatbot/custom/upload.php",
+        url: "https://targetconstruction.ca/new/upload.php",
         type: 'post',
         data: fd,
         contentType: false,
