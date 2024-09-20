@@ -388,6 +388,7 @@
     },
     "new_section_kCRUhF": {
       "type": "new-section",
+      "disabled": true,
       "settings": {
         "image_with_text_image": "shopify:\/\/shop_images\/1920_x_720_d_4893e338-bfcf-484c-b74f-fe9978c79712.webp"
       }
