@@ -158,7 +158,7 @@
               </div>
               <div class="birthday field">
                 <label for="birthday">Birthday</label>
-                <input id="birthday" type="date" name="customer[note][Birthday]" />
+                <input id="birthday_{{ form.id }}" value="{{ form.birthday }}" type="date" name="customer.birthday" />
               </div>
               <div>
                 <label for="AddressCountry_{{ form.id }}">
