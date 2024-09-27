@@ -49,6 +49,10 @@
             <input type="text" id="AddressCityNew" name="address[city]" value="{{ form.city }}" autocomplete="address-level2" placeholder="{{ 'customer.addresses.city' | t }}">
             <label for="AddressCityNew">{{ 'customer.addresses.city' | t }}</label>
           </div>
+          <div class="birthday field">
+            <label for="birthday">Birthday</label>
+            <input id="birthday" type="date" name="customer[note][Birthday]" />
+          </div>
           <div>
             <label for="AddressCountryNew">{{ 'customer.addresses.country' | t }}</label>
             <div class="select">
