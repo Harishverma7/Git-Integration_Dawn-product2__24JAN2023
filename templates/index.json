@@ -1,27 +1,34 @@
 /*
-* ------------------------------------------------------------
-* IMPORTANT: The contents of this file are auto-generated.
-*
-* This file may be updated by the Shopify admin theme editor
-* or related systems. Please exercise caution as any changes
-* made to this file may be overwritten.
-* ------------------------------------------------------------
-*/
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "169386037467daa4ed": {
       "type": "apps",
       "blocks": {
         "ai_chatbot_chatbot_CnYTxU": {
-          "type": "shopify:\/\/apps\/ai-chatbot\/blocks\/chatbot\/963e5fd9-1ad3-444a-94be-74918f6768d3",
+          "type": "shopify://apps/ai-chatbot/blocks/chatbot/963e5fd9-1ad3-444a-94be-74918f6768d3",
           "settings": {
             "name": "Chat bot (Chat GPT)",
             "message": "Bot: Hello! 👋 I'm your friendly AI ChatBot assistant. How can I assist you today?"
           }
+        },
+        "crud_app_app_form_wWPQaQ": {
+          "type": "shopify://apps/crud-app/blocks/app-form/89c6873f-a3e1-411d-a7c0-9fca097e0c54",
+          "settings": {
+            "form_title": "App Registration Form"
+          }
         }
       },
       "block_order": [
-        "ai_chatbot_chatbot_CnYTxU"
+        "ai_chatbot_chatbot_CnYTxU",
+        "crud_app_app_form_wWPQaQ"
       ],
       "settings": {
         "include_margins": true
@@ -117,7 +124,7 @@
       "type": "custom-liquid",
       "disabled": true,
       "settings": {
-        "custom_liquid": "<div>\n  {% for product in collection.metafields.custom.products %}\n  {{ product }}\n  {% endfor %}\n<\/div>",
+        "custom_liquid": "<div>\n  {% for product in collection.metafields.custom.products %}\n  {{ product }}\n  {% endfor %}\n</div>",
         "color_scheme": "background-1",
         "padding_top": 40,
         "padding_bottom": 52
@@ -144,7 +151,7 @@
           "type": "buttons",
           "settings": {
             "button_label_1": "Shop all",
-            "button_link_1": "shopify:\/\/collections\/all",
+            "button_link_1": "shopify://collections/all",
             "button_style_secondary_1": true,
             "button_label_2": "",
             "button_link_2": "",
@@ -178,14 +185,14 @@
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "<p>Talk about your brand<\/p>",
+            "heading": "<p>Talk about your brand</p>",
             "heading_size": "h1"
           }
         },
         "text": {
           "type": "text",
           "settings": {
-            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.<\/p>"
+            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>"
           }
         }
       },
@@ -235,12 +242,12 @@
       "type": "video-section",
       "disabled": true,
       "settings": {
-        "video-url": "https:\/\/cdn.shopify.com\/videos\/c\/o\/v\/7acec5fe1cfe420a9a528c6d674a104c.mov",
+        "video-url": "https://cdn.shopify.com/videos/c/o/v/7acec5fe1cfe420a9a528c6d674a104c.mov",
         "video-text1": "BEAUTIFULLY CRAFTED SWIM AND RESORT WEAR FOR THE WELL-TRAVELED WOMAN.",
-        "paragraph": "<p>#viktorialouise<\/p>",
+        "paragraph": "<p>#viktorialouise</p>",
         "button_link": "#",
         "btname": "shop now",
-        "image_with_text_image": "shopify:\/\/shop_images\/viktoria-louise-the-newport-t-shirt-black-2-web.webp"
+        "image_with_text_image": "shopify://shop_images/viktoria-louise-the-newport-t-shirt-black-2-web.webp"
       }
     },
     "collage": {
@@ -288,7 +295,7 @@
       "settings": {
         "heading": "",
         "heading_size": "h1",
-        "video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
+        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
         "description": "",
         "full_width": false,
         "color_scheme": "background-1",
@@ -303,7 +310,7 @@
           "type": "column",
           "settings": {
             "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
             "link_label": "",
             "link": ""
           }
@@ -312,7 +319,7 @@
           "type": "column",
           "settings": {
             "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
             "link_label": "",
             "link": ""
           }
@@ -321,7 +328,7 @@
           "type": "column",
           "settings": {
             "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
             "link_label": "",
             "link": ""
           }
@@ -390,7 +397,7 @@
       "type": "new-section",
       "disabled": true,
       "settings": {
-        "image_with_text_image": "shopify:\/\/shop_images\/1920_x_720_d_4893e338-bfcf-484c-b74f-fe9978c79712.webp"
+        "image_with_text_image": "shopify://shop_images/1920_x_720_d_4893e338-bfcf-484c-b74f-fe9978c79712.webp"
       }
     }
   },
