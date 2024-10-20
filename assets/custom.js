@@ -828,3 +828,12 @@ addMarker();
 //       });
 // })
 
+
+
+
+
+$('input[type="radio"],[type="button"]').click(function(){
+var steps_btn = $(this);
+var btn_value = steps_btn.attr('data-id');
+console.log(btn_value);
+});
