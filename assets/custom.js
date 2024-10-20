@@ -6,7 +6,7 @@
         let sdfd = $(this),
             feild_id = sdfd.attr("id");
         if(step == feild_id){
-          // sdfd.show().siblings().hide();
+          sdfd.show().siblings().hide();
 
           let fieldsetIndex = sdfd.data("index");
           var percent = parseFloat(100 / steps)*fieldsetIndex;
@@ -832,16 +832,4 @@ addMarker();
 
 
 
-$('input[type="radio"],[type="button"]').click(function(){
-var steps_btn = $(this);
-var btn_value = steps_btn.attr('data-id');
-
-$('.step_list').each(function(){
-  var feildsets = $(this);
-  var feildSetId = feildsets.attr('id');
-  if(btn_value == feildSetId){
-    $(this).show().siblings().hide();
-  }
-})
-  
-});
+ 
