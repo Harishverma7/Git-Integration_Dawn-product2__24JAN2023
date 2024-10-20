@@ -839,7 +839,9 @@ var btn_value = steps_btn.attr('data-id');
 $('.step_list').each(function(){
   var feildsets = $(this);
   var feildSetId = feildsets.attr('id');
-  console.log(feildSetId)
+  if(btn_value == feildSetId){
+    $(this).show().siblings().hide();
+  }
 })
   
 });
