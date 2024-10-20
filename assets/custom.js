@@ -6,7 +6,7 @@
         let sdfd = $(this),
             feild_id = sdfd.attr("id");
         if(step == feild_id){
-          sdfd.show().siblings().hide();
+          // sdfd.show().siblings().hide();
 
           let fieldsetIndex = sdfd.data("index");
           var percent = parseFloat(100 / steps)*fieldsetIndex;
