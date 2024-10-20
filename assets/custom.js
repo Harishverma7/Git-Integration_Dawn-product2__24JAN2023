@@ -840,5 +840,5 @@ addMarker();
 fetch("https://api.avangardgold.ro/v1/currency-exchange/locations")
               .then((response) => response.json())
               .then((user) => {
-              console.log(user);
+              console.log(user.data.locations);
               });
