@@ -841,6 +841,6 @@ fetch("https://api.avangardgold.ro/v1/currency-exchange/locations")
               .then((response) => response.json())
               .then((user) => {
               user.data.locations.forEach(function(data){
-                console.log(data.name);
+                console.log(data);
               })
               });
