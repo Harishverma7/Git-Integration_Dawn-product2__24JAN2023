@@ -19,21 +19,16 @@
             "message": "Bot: Hello! 👋 I'm your friendly AI ChatBot assistant. How can I assist you today?"
           }
         },
-        "crud_app_app_form_wWPQaQ": {
-          "type": "shopify://apps/crud-app/blocks/app-form/89c6873f-a3e1-411d-a7c0-9fca097e0c54",
-          "settings": {
-            "form_title": "App Registration Form"
-          }
-        },
         "forms_inline_cy8jci": {
           "type": "shopify://apps/forms/blocks/inline/8744a304-fcb1-4347-b211-bb6b4759a76a",
+          "disabled": true,
           "settings": {
             "form_id": "219193",
             "text_color": "#202020",
             "button_background_color": "#202020",
-            "button_label_color": "#FFFFFF",
-            "links_color": "#1878B9",
-            "errors_color": "#E02229",
+            "button_label_color": "#ffffff",
+            "links_color": "#1878b9",
+            "errors_color": "#e02229",
             "text_alignment": "center",
             "form_alignment": "center",
             "padding_top": 0,
@@ -45,7 +40,6 @@
       },
       "block_order": [
         "ai_chatbot_chatbot_CnYTxU",
-        "crud_app_app_form_wWPQaQ",
         "forms_inline_cy8jci"
       ],
       "settings": {
@@ -80,8 +74,7 @@
         "template--16017453482162__ca0d94ee-3f79-44bf-acc4-ca06f98ac254-price-1": {
           "type": "price",
           "disabled": true,
-          "settings": {
-          }
+          "settings": {}
         },
         "template--16017453482162__ca0d94ee-3f79-44bf-acc4-ca06f98ac254-variant_picker-1": {
           "type": "variant_picker",
@@ -93,8 +86,7 @@
         "template--16017453482162__ca0d94ee-3f79-44bf-acc4-ca06f98ac254-quantity_selector-1": {
           "type": "quantity_selector",
           "disabled": true,
-          "settings": {
-          }
+          "settings": {}
         },
         "template--16017453482162__ca0d94ee-3f79-44bf-acc4-ca06f98ac254-buy_buttons-1": {
           "type": "buy_buttons",
