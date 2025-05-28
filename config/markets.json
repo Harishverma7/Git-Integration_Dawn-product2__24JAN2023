@@ -8,15 +8,9 @@
  * ------------------------------------------------------------
  */
 {
-  "parent": "index.json",
-  "context": {
-    "market": "india"
-  },
-  "sections": {
-    "multicolumn": {
-      "disabled": false,
-      "settings": {},
-      "blocks": {}
+  "markets": {
+    "india": {
+      "parent": "@default"
     }
   }
 }
