@@ -252,6 +252,11 @@
         "type": "shopify://apps/otp-login-with-phone/blocks/scripts_embedded_block/c7f2efe3-e781-470b-96ef-267ca74ad469",
         "disabled": false,
         "settings": {}
+      },
+      "1987381849243170004": {
+        "type": "shopify://apps/apphero-free-gift/blocks/app-embed/775538df-2a18-473b-ada3-d731b074c1a3",
+        "disabled": false,
+        "settings": {}
       }
     }
   },
