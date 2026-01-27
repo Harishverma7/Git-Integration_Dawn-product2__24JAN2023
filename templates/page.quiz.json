@@ -15,9 +15,19 @@
         "padding_top": 28,
         "padding_bottom": 28
       }
+    },
+    "quiz_EV7t4U": {
+      "type": "quiz",
+      "name": " Quiz Main Section",
+      "settings": {
+        "classadd": "",
+        "heading": "",
+        "image": "shopify://shop_images/7th_7cdb03f5-6881-4242-a2b5-904ff22022f9.jpg"
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "quiz_EV7t4U"
   ]
 }
