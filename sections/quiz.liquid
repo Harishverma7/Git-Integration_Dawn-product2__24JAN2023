@@ -354,7 +354,6 @@ $("#getResults").click(function () {
   const age = $("#quiz_age").val().trim();
   const address = $("#quiz_address").val().trim();
   const social = $("#quiz_social").val().trim();
-  const file = $("#quiz_file_url").val().trim();
 
   const phoneRegex = /^[0-9]{10,15}$/;
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -390,18 +389,12 @@ $("#getResults").click(function () {
     return;
   }
 
-  if (!urlRegex.test(file)) {
-    $(".social-error").show();
-    return;
-  }
-
   sessionStorage.setItem("quizName", name);
   sessionStorage.setItem("quizPhone", phone);
   sessionStorage.setItem("quizEmail", email);
   sessionStorage.setItem("quizAge", age);
   sessionStorage.setItem("quizAddress", address);
   sessionStorage.setItem("quizSocial", social);
-  sessionStorage.setItem("quiz_file_url", social);
 
   $(".emailpopup-section").removeClass("active");
   showResult();
