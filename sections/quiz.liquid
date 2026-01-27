@@ -2,24 +2,29 @@
 <script src="{{ 'quiz.js' | asset_url }}"></script>
 {{ 'quiz.css' | asset_url | stylesheet_tag }}    
 
+<iframe name="quiz_contact_iframe" style="display:none;"></iframe>
 
 <div class="emailpopup-section">
   <div class="emailpopup-sectioninner">
 
     <div class="mainheading-popup">
       <h2>Before we show your results…</h2>
-      <img class="email-closebtn" src="https://cdn.shopify.com/s/files/1/0576/2167/6166/files/Frame_3532_2.png?v=1757509273">
+      <img class="email-closebtn"
+        src="https://cdn.shopify.com/s/files/1/0576/2167/6166/files/Frame_3532_2.png?v=1757509273">
     </div>
 
-      <form id="quizContactForm">
-        <input type="hidden" name="form_type" value="contact">
-        <input type="hidden" name="utf8" value="✓">
-        <input type="hidden" name="contact[quiz_result]" id="quiz_result">
+    {% form 'contact',
+      id: 'QuizContactForm',
+      class: 'quiz-contact-form',
+      target: 'quiz_contact_iframe'
+    %}
+
+      <input type="hidden" name="contact[quiz_result]" id="quiz_result">
 
       <div class="emailbox-section">
 
         <label>Your Name
-          <input type="text" name="contact[name]" id="quiz_name">
+          <input type="text" name="contact[name]" id="quiz_name" required>
         </label>
 
         <label>Phone Number
@@ -27,7 +32,7 @@
         </label>
 
         <label>Email
-          <input type="email" name="contact[email]" id="quiz_email">
+          <input type="email" name="contact[email]" id="quiz_email" required>
         </label>
 
         <label>Age
@@ -49,17 +54,21 @@
           </label>
         </div>
 
-        <button type="submit" id="getResults">Get my Results! ✨</button>
+        <button type="submit" id="getResults">
+          Get my Results! ✨
+        </button>
 
         <p class="form-success-msg" style="display:none;color:#1eb556;margin-top:12px;">
           ✅ Details submitted successfully!
         </p>
 
       </div>
-    </form>
+
+    {% endform %}
 
   </div>
 </div>
+
 
 
 
@@ -165,6 +174,356 @@
 
   </div>
 </div>
+
+
+
+<script>
+$(document).ready(function () {
+
+  /* ================= QUIZ DATA ================= */
+  const quizData = [
+    {
+      question: "1. What's your ideal way to spend a romantic evening?",
+      options: [
+        { text: "a) Candlelit dinner at a fancy restaurant", value: 0 },
+        { text: "b) Cooking together at home", value: 1 },
+        { text: "c) Watching a movie under the stars", value: 2 },
+        { text: "d) Dancing the night away", value: 2 }
+      ]
+    },
+    {
+      question: "2. What's your love language?",
+      options: [
+        { text: "a) Words of affirmation (sweet talks)", value: 0 },
+        { text: "b) Quality time (spending time together)", value: 1 },
+        { text: "c) Gifts (showing love with presents)", value: 2 },
+        { text: "d) Acts of service (helping out)", value: 2 }
+      ]
+    },
+    {
+      question: "3. What's your idea of a perfect weekend?",
+      options: [
+        { text: "a) Exploring a new place", value: 0 },
+        { text: "b) Relaxing at home", value: 1 },
+        { text: "c) Trying out a new restaurant", value: 2 },
+        { text: "d) Attending a party or event", value: 2 }
+      ]
+    },
+    {
+      question: "4. How important is family in your life?",
+      options: [
+        { text: "a) Very important", value: 0 },
+        { text: "b) Somewhat important", value: 1 },
+        { text: "c) Not very important", value: 2 },
+        { text: "d) Not at all important", value: 2 }
+      ]
+    },
+    {
+      question: "5. What's your favorite way to show love?",
+      options: [
+        { text: "a) Surprising them with gifts", value: 0 },
+        { text: "b) Cooking their favorite meal", value: 1 },
+        { text: "c) Giving them space when needed", value: 2 },
+        { text: "d) Being there to listen", value: 2 }
+      ]
+    },
+    {
+      question: "6. How do you handle conflicts?",
+      options: [
+        { text: "a) Talk it out immediately", value: 0 },
+        { text: "b) Give each other space to cool off", value: 1 },
+        { text: "c) Try to avoid conflicts", value: 2 },
+        { text: "d) Seek advice from friends/family", value: 2 }
+      ]
+    },
+    {
+      question: "7. What's your style?",
+      options: [
+        { text: "a) Classic and traditional", value: 0 },
+        { text: "b) Fun and spontaneous", value: 1 },
+        { text: "c) Adventurous and bold", value: 2 },
+        { text: "d) Laid-back and chill", value: 2 }
+      ]
+    },
+    {
+      question: "8 What's your favorite way to connect with someone?",
+      options: [
+        { text: "a) Deep conversations", value: 0 },
+        { text: "b) Sharing laughs and jokes", value: 1 },
+        { text: "c) Common interests", value: 2 },
+        { text: "d) Supporting each other's goals", value: 2 }
+      ]
+    }
+  ];
+
+  let currentQ = 0;
+  let answers = [];
+
+  /* ================= RENDER QUESTION ================= */
+  function renderQuestion() {
+    const qData = quizData[currentQ];
+
+    $(".question-text").text(qData.question);
+    $(".options").empty();
+
+    qData.options.forEach(opt => {
+      const btn = $("<button>")
+        .text(opt.text)
+        .attr("data-value", opt.value);
+
+      if (answers[currentQ] === opt.value) {
+        btn.addClass("active");
+      }
+
+      $(".options").append(btn);
+    });
+
+    /* Progress bar + text */
+    const totalQ = quizData.length;
+    const percent = ((currentQ + 1) / totalQ) * 100;
+    $(".progress").css("width", percent + "%");
+    $(".progress-text").text(`${currentQ + 1} of ${totalQ}`);
+
+    /* Back button */
+    currentQ === 0 ? $("#backBtn").hide() : $("#backBtn").show();
+
+    /* Next / Finish button */
+    if (currentQ === totalQ - 1) {
+      $("#nextBtn").text("Finish");
+    } else {
+      $("#nextBtn").text("Next");
+    }
+  }
+
+  /* ================= START QUIZ ================= */
+  $("#startQuiz").click(function (e) {
+    e.preventDefault();
+    $(".progressbar-secbuttons").show();
+    $(".logosection").addClass("active");
+    $(".quiz-start").hide();
+    $(".quiz-questions").show();
+    renderQuestion();
+  });
+
+  /* ================= OPTION CLICK ================= */
+  $(document).on("click", ".options button", function () {
+    const val = parseInt($(this).data("value"));
+    $(this).addClass("active").siblings().removeClass("active");
+    answers[currentQ] = val;
+  });
+
+  /* ================= NEXT / FINISH ================= */
+  $("#nextBtn").click(function () {
+    if (answers[currentQ] === undefined) {
+      alert("Please select an option");
+      return;
+    }
+
+    if (currentQ === quizData.length - 1) {
+      $(".emailpopup-section").addClass("active");
+    } else {
+      currentQ++;
+      renderQuestion();
+    }
+  });
+
+  /* ================= BACK ================= */
+  $("#backBtn").click(function () {
+    if (currentQ > 0) {
+      currentQ--;
+      renderQuestion();
+    }
+  });
+
+  /* ================= EMAIL VALIDATION ================= */
+$("#getResults").click(function () {
+
+  $(".errormsg").hide();
+
+  const name = $("#quiz_name").val().trim();
+  const phone = $("#quiz_phone").val().trim();
+  const email = $("#quiz_email").val().trim();
+  const age = $("#quiz_age").val().trim();
+  const address = $("#quiz_address").val().trim();
+  const social = $("#quiz_social").val().trim();
+
+  const phoneRegex = /^[0-9]{10,15}$/;
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const urlRegex = /^(https?:\/\/)?([\w\-]+\.)+[a-z]{2,}\/?.*$/i;
+
+  if (!name) {
+    $(".name-error").show();
+    return;
+  }
+
+  if (!phoneRegex.test(phone)) {
+    $(".phone-error").show();
+    return;
+  }
+
+  if (!emailRegex.test(email)) {
+    $(".email-error").show();
+    return;
+  }
+
+  if (!age || age < 10 || age > 100) {
+    $(".age-error").show();
+    return;
+  }
+
+  if (!address) {
+    $(".address-error").show();
+    return;
+  }
+
+  if (!urlRegex.test(social)) {
+    $(".social-error").show();
+    return;
+  }
+
+  sessionStorage.setItem("quizName", name);
+  sessionStorage.setItem("quizPhone", phone);
+  sessionStorage.setItem("quizEmail", email);
+  sessionStorage.setItem("quizAge", age);
+  sessionStorage.setItem("quizAddress", address);
+  sessionStorage.setItem("quizSocial", social);
+
+  $(".emailpopup-section").removeClass("active");
+  showResult();
+});
+
+
+  $(".email-closebtn").click(function () {
+    $(".emailpopup-section").removeClass("active");
+  });
+
+  /* ================= RESULT ================= */
+  function showResult() {
+    const total = answers.reduce((a, b) => a + b, 0);
+    sessionStorage.setItem("quizScore", total);
+
+    $(".quiz-questions").hide();
+    $(".quiz-result").show();
+    $(".score-output").text(total + " / " + (quizData.length * 2));
+    $(".logosection").removeClass("active");
+
+    let heading = "", paragraph = "", subheading = "", subpara = "", image = "";
+
+    if (total <= 4) {
+      heading = "Cool, Calm, and Collected!";
+      paragraph = "You seem to manage stress well.";
+      subheading = "Maximize your recovery";
+      subpara = "InnerGize activates your vagus nerve.";
+      image = "https://cdn.shopify.com/s/files/1/0576/2167/6166/files/Rectangle_1218_1.png";
+    } else if (total <= 9) {
+      heading = "A Bit Stressed, But You’ve Got This";
+      paragraph = "Small lifestyle changes can help.";
+      subheading = "Maximize your recovery";
+      subpara = "InnerGize activates your vagus nerve.";
+      image = "https://cdn.shopify.com/s/files/1/0576/2167/6166/files/Rectangle_1217.png";
+    } else {
+      heading = "Your Mind and Body Need a Pause";
+      paragraph = "Stress may be affecting your daily life.";
+      subheading = "Combat stress with InnerGize";
+      subpara = "InnerGize activates your vagus nerve.";
+      image = "https://cdn.shopify.com/s/files/1/0576/2167/6166/files/Rectangle_1217_1.png";
+    }
+
+    // $(".mainheading-quiz").text(heading);
+    // $(".mainpara-quiz").text(paragraph);
+    // $(".mainsubheading-quiz").text(subheading);
+    // $(".mainsubpara-quiz").text(subpara);
+    // $(".finalimg-quiz").attr("src", image);
+  }
+
+});
+
+
+
+$(document).on("click", ".addtocart_btn", function (e) {
+  e.preventDefault();
+  e.stopPropagation();
+
+  var $btn = $(this);
+  var variantId = Number($btn.data("id"));
+
+  if (!variantId) {
+    console.error("Variant ID missing");
+    return;
+  }
+
+  $btn.prop("disabled", true).addClass("loading");
+
+  $.ajax({
+    type: "POST",
+    url: "/cart/add.js",
+    data: {
+      id: variantId,
+      quantity: 1
+    },
+    dataType: "json",
+
+    success: function (item) {
+
+      /* ✅ Refresh cart data */
+      $.getJSON("/cart.js", function (cart) {
+
+        /* 🔥 Trigger Shopify cart update events */
+        $(document).trigger("cart:refresh", cart);
+
+        /* Optional: open drawer */
+        if (window.upcartOpenCart) {
+          window.upcartOpenCart();
+        }
+      });
+
+    },
+
+    error: function (err) {
+      alert(err.responseJSON?.description || "Add to cart failed");
+    },
+
+    complete: function () {
+      $btn.prop("disabled", false).removeClass("loading");
+    }
+  });
+});
+
+
+
+
+
+
+$("#QuizContactForm").on("submit", function () {
+
+  const name = $("#quiz_name").val().trim();
+  const email = $("#quiz_email").val().trim();
+
+  if (!name || !email) {
+    alert("Please fill required fields");
+    return false;
+  }
+
+  $("#quiz_result").val(sessionStorage.getItem("quizScore") || "N/A");
+
+  $(".form-success-msg").fadeIn();
+
+  setTimeout(function () {
+    $(".emailpopup-section").removeClass("active");
+    $(".form-success-msg").hide();
+    showResult();
+  }, 1200);
+
+  return true;
+});
+
+
+
+</script>
+
+
+
+
 
   
 <style>
@@ -886,360 +1245,7 @@ div#product-name {
 </style>
        
     
-<script>
-$(document).ready(function () {
 
-  /* ================= QUIZ DATA ================= */
-  const quizData = [
-    {
-      question: "1. What's your ideal way to spend a romantic evening?",
-      options: [
-        { text: "a) Candlelit dinner at a fancy restaurant", value: 0 },
-        { text: "b) Cooking together at home", value: 1 },
-        { text: "c) Watching a movie under the stars", value: 2 },
-        { text: "d) Dancing the night away", value: 2 }
-      ]
-    },
-    {
-      question: "2. What's your love language?",
-      options: [
-        { text: "a) Words of affirmation (sweet talks)", value: 0 },
-        { text: "b) Quality time (spending time together)", value: 1 },
-        { text: "c) Gifts (showing love with presents)", value: 2 },
-        { text: "d) Acts of service (helping out)", value: 2 }
-      ]
-    },
-    {
-      question: "3. What's your idea of a perfect weekend?",
-      options: [
-        { text: "a) Exploring a new place", value: 0 },
-        { text: "b) Relaxing at home", value: 1 },
-        { text: "c) Trying out a new restaurant", value: 2 },
-        { text: "d) Attending a party or event", value: 2 }
-      ]
-    },
-    {
-      question: "4. How important is family in your life?",
-      options: [
-        { text: "a) Very important", value: 0 },
-        { text: "b) Somewhat important", value: 1 },
-        { text: "c) Not very important", value: 2 },
-        { text: "d) Not at all important", value: 2 }
-      ]
-    },
-    {
-      question: "5. What's your favorite way to show love?",
-      options: [
-        { text: "a) Surprising them with gifts", value: 0 },
-        { text: "b) Cooking their favorite meal", value: 1 },
-        { text: "c) Giving them space when needed", value: 2 },
-        { text: "d) Being there to listen", value: 2 }
-      ]
-    },
-    {
-      question: "6. How do you handle conflicts?",
-      options: [
-        { text: "a) Talk it out immediately", value: 0 },
-        { text: "b) Give each other space to cool off", value: 1 },
-        { text: "c) Try to avoid conflicts", value: 2 },
-        { text: "d) Seek advice from friends/family", value: 2 }
-      ]
-    },
-    {
-      question: "7. What's your style?",
-      options: [
-        { text: "a) Classic and traditional", value: 0 },
-        { text: "b) Fun and spontaneous", value: 1 },
-        { text: "c) Adventurous and bold", value: 2 },
-        { text: "d) Laid-back and chill", value: 2 }
-      ]
-    },
-    {
-      question: "8 What's your favorite way to connect with someone?",
-      options: [
-        { text: "a) Deep conversations", value: 0 },
-        { text: "b) Sharing laughs and jokes", value: 1 },
-        { text: "c) Common interests", value: 2 },
-        { text: "d) Supporting each other's goals", value: 2 }
-      ]
-    }
-  ];
-
-  let currentQ = 0;
-  let answers = [];
-
-  /* ================= RENDER QUESTION ================= */
-  function renderQuestion() {
-    const qData = quizData[currentQ];
-
-    $(".question-text").text(qData.question);
-    $(".options").empty();
-
-    qData.options.forEach(opt => {
-      const btn = $("<button>")
-        .text(opt.text)
-        .attr("data-value", opt.value);
-
-      if (answers[currentQ] === opt.value) {
-        btn.addClass("active");
-      }
-
-      $(".options").append(btn);
-    });
-
-    /* Progress bar + text */
-    const totalQ = quizData.length;
-    const percent = ((currentQ + 1) / totalQ) * 100;
-    $(".progress").css("width", percent + "%");
-    $(".progress-text").text(`${currentQ + 1} of ${totalQ}`);
-
-    /* Back button */
-    currentQ === 0 ? $("#backBtn").hide() : $("#backBtn").show();
-
-    /* Next / Finish button */
-    if (currentQ === totalQ - 1) {
-      $("#nextBtn").text("Finish");
-    } else {
-      $("#nextBtn").text("Next");
-    }
-  }
-
-  /* ================= START QUIZ ================= */
-  $("#startQuiz").click(function (e) {
-    e.preventDefault();
-    $(".progressbar-secbuttons").show();
-    $(".logosection").addClass("active");
-    $(".quiz-start").hide();
-    $(".quiz-questions").show();
-    renderQuestion();
-  });
-
-  /* ================= OPTION CLICK ================= */
-  $(document).on("click", ".options button", function () {
-    const val = parseInt($(this).data("value"));
-    $(this).addClass("active").siblings().removeClass("active");
-    answers[currentQ] = val;
-  });
-
-  /* ================= NEXT / FINISH ================= */
-  $("#nextBtn").click(function () {
-    if (answers[currentQ] === undefined) {
-      alert("Please select an option");
-      return;
-    }
-
-    if (currentQ === quizData.length - 1) {
-      $(".emailpopup-section").addClass("active");
-    } else {
-      currentQ++;
-      renderQuestion();
-    }
-  });
-
-  /* ================= BACK ================= */
-  $("#backBtn").click(function () {
-    if (currentQ > 0) {
-      currentQ--;
-      renderQuestion();
-    }
-  });
-
-  /* ================= EMAIL VALIDATION ================= */
-$("#getResults").click(function () {
-
-  $(".errormsg").hide();
-
-  const name = $("#quiz_name").val().trim();
-  const phone = $("#quiz_phone").val().trim();
-  const email = $("#quiz_email").val().trim();
-  const age = $("#quiz_age").val().trim();
-  const address = $("#quiz_address").val().trim();
-  const social = $("#quiz_social").val().trim();
-
-  const phoneRegex = /^[0-9]{10,15}$/;
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  const urlRegex = /^(https?:\/\/)?([\w\-]+\.)+[a-z]{2,}\/?.*$/i;
-
-  if (!name) {
-    $(".name-error").show();
-    return;
-  }
-
-  if (!phoneRegex.test(phone)) {
-    $(".phone-error").show();
-    return;
-  }
-
-  if (!emailRegex.test(email)) {
-    $(".email-error").show();
-    return;
-  }
-
-  if (!age || age < 10 || age > 100) {
-    $(".age-error").show();
-    return;
-  }
-
-  if (!address) {
-    $(".address-error").show();
-    return;
-  }
-
-  if (!urlRegex.test(social)) {
-    $(".social-error").show();
-    return;
-  }
-
-  sessionStorage.setItem("quizName", name);
-  sessionStorage.setItem("quizPhone", phone);
-  sessionStorage.setItem("quizEmail", email);
-  sessionStorage.setItem("quizAge", age);
-  sessionStorage.setItem("quizAddress", address);
-  sessionStorage.setItem("quizSocial", social);
-
-  $(".emailpopup-section").removeClass("active");
-  showResult();
-});
-
-
-  $(".email-closebtn").click(function () {
-    $(".emailpopup-section").removeClass("active");
-  });
-
-  /* ================= RESULT ================= */
-  function showResult() {
-    const total = answers.reduce((a, b) => a + b, 0);
-    sessionStorage.setItem("quizScore", total);
-
-    $(".quiz-questions").hide();
-    $(".quiz-result").show();
-    $(".score-output").text(total + " / " + (quizData.length * 2));
-    $(".logosection").removeClass("active");
-
-    let heading = "", paragraph = "", subheading = "", subpara = "", image = "";
-
-    if (total <= 4) {
-      heading = "Cool, Calm, and Collected!";
-      paragraph = "You seem to manage stress well.";
-      subheading = "Maximize your recovery";
-      subpara = "InnerGize activates your vagus nerve.";
-      image = "https://cdn.shopify.com/s/files/1/0576/2167/6166/files/Rectangle_1218_1.png";
-    } else if (total <= 9) {
-      heading = "A Bit Stressed, But You’ve Got This";
-      paragraph = "Small lifestyle changes can help.";
-      subheading = "Maximize your recovery";
-      subpara = "InnerGize activates your vagus nerve.";
-      image = "https://cdn.shopify.com/s/files/1/0576/2167/6166/files/Rectangle_1217.png";
-    } else {
-      heading = "Your Mind and Body Need a Pause";
-      paragraph = "Stress may be affecting your daily life.";
-      subheading = "Combat stress with InnerGize";
-      subpara = "InnerGize activates your vagus nerve.";
-      image = "https://cdn.shopify.com/s/files/1/0576/2167/6166/files/Rectangle_1217_1.png";
-    }
-
-    // $(".mainheading-quiz").text(heading);
-    // $(".mainpara-quiz").text(paragraph);
-    // $(".mainsubheading-quiz").text(subheading);
-    // $(".mainsubpara-quiz").text(subpara);
-    // $(".finalimg-quiz").attr("src", image);
-  }
-
-});
-
-
-
-$(document).on("click", ".addtocart_btn", function (e) {
-  e.preventDefault();
-  e.stopPropagation();
-
-  var $btn = $(this);
-  var variantId = Number($btn.data("id"));
-
-  if (!variantId) {
-    console.error("Variant ID missing");
-    return;
-  }
-
-  $btn.prop("disabled", true).addClass("loading");
-
-  $.ajax({
-    type: "POST",
-    url: "/cart/add.js",
-    data: {
-      id: variantId,
-      quantity: 1
-    },
-    dataType: "json",
-
-    success: function (item) {
-
-      /* ✅ Refresh cart data */
-      $.getJSON("/cart.js", function (cart) {
-
-        /* 🔥 Trigger Shopify cart update events */
-        $(document).trigger("cart:refresh", cart);
-
-        /* Optional: open drawer */
-        if (window.upcartOpenCart) {
-          window.upcartOpenCart();
-        }
-      });
-
-    },
-
-    error: function (err) {
-      alert(err.responseJSON?.description || "Add to cart failed");
-    },
-
-    complete: function () {
-      $btn.prop("disabled", false).removeClass("loading");
-    }
-  });
-});
-
-
-
-
-
-
-{% comment %} $("#getResults").on("click", function () {
-
-  const name = $("#quiz_name").val().trim();
-  const phone = $("#quiz_phone").val().trim();
-  const email = $("#quiz_email").val().trim();
-  const age = $("#quiz_age").val().trim();
-  const address = $("#quiz_address").val().trim();
-  const social = $("#quiz_social").val().trim();
-
-  if (!name || !phone || !email || !age || !address || !social) {
-    alert("Please fill all fields");
-    return;
-  }
-
-  $("#quiz_result").val(sessionStorage.getItem("quizScore") || "N/A");
-
-  $.ajax({
-    type: "POST",
-    url: "/contact",
-    data: $("#quizContactForm").serialize(),
-    success: function () {
-      $(".form-success-msg").fadeIn();
-
-      setTimeout(function () {
-        $(".emailpopup-section").removeClass("active");
-        $(".form-success-msg").hide();
-        showResult();
-      }, 1000);
-    },
-    error: function () {
-      alert("Something went wrong. Try again.");
-    }
-  });
-}); {% endcomment %}
-
-
-</script>
 
 
 {% schema %}
