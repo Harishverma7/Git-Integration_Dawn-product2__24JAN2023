@@ -43,6 +43,13 @@
           <input type="text" name="contact[address]" id="quiz_address">
         </label>
 
+        <label>Upload File
+        <input type="file" id="quiz_file">
+        </label>
+
+        <input type="hidden" name="contact[file_link]" id="quiz_file_url">
+
+
         <label>Social Media Page Link
           <input type="url" name="contact[social_link]" id="quiz_social">
         </label>
@@ -67,7 +74,7 @@
     {% endform %}
 
   </div>
-</div>
+</div>>
 
 
 
@@ -518,6 +525,31 @@ $("#QuizContactForm").on("submit", function () {
 });
 
 
+document.getElementById("quiz_file").addEventListener("change", function () {
+  const file = this.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+
+  reader.onloadend = function () {
+    const base64Data = reader.result.split(",")[1];
+
+    fetch("YOUR_GOOGLE_SCRIPT_WEB_APP_URL", {
+      method: "POST",
+      body: new URLSearchParams({
+        file: base64Data,
+        name: file.name,
+        type: file.type
+      })
+    })
+    .then(res => res.json())
+    .then(data => {
+      document.getElementById("quiz_file_url").value = data.url;
+    });
+  };
+
+  reader.readAsDataURL(file);
+});
 
 </script>
 
