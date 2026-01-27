@@ -47,8 +47,7 @@
         <input type="file" id="quiz_file">
         </label>
 
-        <textarea name="contact[body]" id="quiz_message" style="display:none;"></textarea>
-
+        <input type="hidden" name="contact[file_link]" id="quiz_file_url">
 
 
 
@@ -541,8 +540,7 @@ fetch("https://api.cloudinary.com/v1_1/dsra5vukf/upload", {
 })
   .then(res => res.json())
   .then(data => {
-    document.getElementById("quiz_message").value =
-  "Uploaded File:\n" + data.secure_url;
+    document.getElementById("quiz_file_url").value = data.secure_url;
     document.getElementById("getResults").disabled = false;
   })
   .catch(() => {
