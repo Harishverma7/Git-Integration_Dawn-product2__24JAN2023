@@ -61,7 +61,7 @@
           </label>
         </div>
 
-        <button type="submit" id="getResults">
+        <button type="submit" id="getResults" disabled>
           Get my Results! ✨
         </button>
 
@@ -525,9 +525,14 @@ $("#QuizContactForm").on("submit", function () {
 });
 
 
+const submitBtn = document.getElementById("getResults");
+submitBtn.disabled = true;
+
 document.getElementById("quiz_file").addEventListener("change", function () {
   const file = this.files[0];
   if (!file) return;
+
+  submitBtn.disabled = true;
 
   const reader = new FileReader();
 
@@ -545,11 +550,17 @@ document.getElementById("quiz_file").addEventListener("change", function () {
     .then(res => res.json())
     .then(data => {
       document.getElementById("quiz_file_url").value = data.url;
+      submitBtn.disabled = false;
+    })
+    .catch(() => {
+      alert("File upload failed. Try again.");
+      submitBtn.disabled = true;
     });
   };
 
   reader.readAsDataURL(file);
 });
+
 
 </script>
 
