@@ -41,6 +41,15 @@
           <input type="text" name="contact[address]" id="quiz_address">
         </label>
 
+        <label>Upload File
+        <input type="file" id="quiz_file">
+        </label>
+
+<textarea name="contact[body]" id="quiz_message" style="display:none;"></textarea>
+
+
+
+
         <label>Social Media Page Link
           <input type="url" name="contact[social_link]" id="quiz_social">
         </label>
@@ -52,7 +61,7 @@
           </label>
         </div>
 
-        <button type="submit" id="getResults">
+        <button type="submit" id="getResults" disabled>
           Get my Results! ✨
         </button>
 
@@ -356,6 +365,7 @@ $("#getResults").click(function () {
   const age = $("#quiz_age").val().trim();
   const address = $("#quiz_address").val().trim();
   const social = $("#quiz_social").val().trim();
+  const file = $("#quiz_file_url").val().trim();
 
   const phoneRegex = /^[0-9]{10,15}$/;
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -391,12 +401,18 @@ $("#getResults").click(function () {
     return;
   }
 
+  if (!urlRegex.test(file)) {
+    $(".social-error").show();
+    return;
+  }
+
   sessionStorage.setItem("quizName", name);
   sessionStorage.setItem("quizPhone", phone);
   sessionStorage.setItem("quizEmail", email);
   sessionStorage.setItem("quizAge", age);
   sessionStorage.setItem("quizAddress", address);
   sessionStorage.setItem("quizSocial", social);
+  sessionStorage.setItem("quiz_file_url", social);
 
   $(".emailpopup-section").removeClass("active");
   showResult();
@@ -506,14 +522,6 @@ $(document).on("click", ".addtocart_btn", function (e) {
 
 $("#QuizContactForm").on("submit", function () {
 
-  const name = $("#quiz_name").val().trim();
-  const email = $("#quiz_email").val().trim();
-
-  if (!name || !email) {
-    alert("Please fill required fields");
-    return false;
-  }
-
   $("#quiz_result").val(sessionStorage.getItem("quizScore") || "N/A");
 
   $(".form-success-msg").fadeIn();
@@ -525,6 +533,32 @@ $("#QuizContactForm").on("submit", function () {
   }, 1200);
 
   return true;
+});
+
+
+
+document.getElementById("quiz_file").addEventListener("change", function () {
+  const file = this.files[0];
+  if (!file) return;
+
+  const formData = new FormData();
+  formData.append("file", file);
+  formData.append("upload_preset", "quiz_upload");
+
+fetch("https://api.cloudinary.com/v1_1/dsra5vukf/upload", {
+  method: "POST",
+  body: formData
+})
+  .then(res => res.json())
+  .then(data => {
+    document.getElementById("quiz_message").value =
+  "Quiz Result: " + (sessionStorage.getItem("quizScore") || "N/A") + "\n\n" +
+  "Uploaded File:\n" + data.secure_url;
+    document.getElementById("getResults").disabled = false;
+  })
+  .catch(() => {
+    alert("Upload failed");
+  });
 });
 
 
