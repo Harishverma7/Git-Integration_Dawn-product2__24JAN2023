@@ -1203,7 +1203,7 @@ $(document).on("click", ".addtocart_btn", function (e) {
 
 
 
-$("#getResults").on("click", function () {
+{% comment %} $("#getResults").on("click", function () {
 
   const name = $("#quiz_name").val().trim();
   const phone = $("#quiz_phone").val().trim();
@@ -1236,7 +1236,7 @@ $("#getResults").on("click", function () {
       alert("Something went wrong. Try again.");
     }
   });
-});
+}); {% endcomment %}
 
 
 </script>
