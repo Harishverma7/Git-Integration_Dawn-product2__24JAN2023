@@ -1,0 +1,238 @@
+
+<script src="{{ 'quiz.js' | asset_url }}"></script>
+{{ 'quiz.css' | asset_url | stylesheet_tag }}    
+
+
+<div class="emailpopup-section">
+  <div class="emailpopup-sectioninner">
+
+    <div class="mainheading-popup">
+      <h2>Before we show your results…</h2>
+      <img class="email-closebtn" src="https://cdn.shopify.com/s/files/1/0576/2167/6166/files/Frame_3532_2.png?v=1757509273">
+    </div>
+
+      <form id="quizContactForm">
+        <input type="hidden" name="form_type" value="contact">
+        <input type="hidden" name="utf8" value="✓">
+        <input type="hidden" name="contact[quiz_result]" id="quiz_result">
+
+      <div class="emailbox-section">
+
+        <label>Your Name
+          <input type="text" name="contact[name]" id="quiz_name">
+        </label>
+
+        <label>Phone Number
+          <input type="tel" name="contact[phone]" id="quiz_phone">
+        </label>
+
+        <label>Email
+          <input type="email" name="contact[email]" id="quiz_email">
+        </label>
+
+        <label>Age
+          <input type="number" name="contact[age]" id="quiz_age">
+        </label>
+
+        <label>Address
+          <input type="text" name="contact[address]" id="quiz_address">
+        </label>
+
+        <label>Social Media Page Link
+          <input type="url" name="contact[social_link]" id="quiz_social">
+        </label>
+
+        <div class="checkbox-condition">
+          <label>
+            <input type="checkbox" required>
+            Keep me in the loop with news and promotions via email.
+          </label>
+        </div>
+
+        <button type="button" id="getResults">Get my Results! ✨</button>
+
+        <p class="form-success-msg" style="display:none;color:#1eb556;margin-top:12px;">
+          ✅ Details submitted successfully!
+        </p>
+
+      </div>
+    </form>
+
+  </div>
+</div>
+
+
+
+<div class="quizmain-section">
+  <div class="quizmain-sectioninner">
+    <a class="closebtnsec-quiz" href="/"><img src="https://cdn.shopify.com/s/files/1/0576/2167/6166/files/Frame_3532_1.png?v=1757492520" /></a>
+    {% comment %} <a class="logosection" href="javascript:void(0)">
+      <img class="logodesktop_sec" src="https://getinnergize.com/cdn/shop/files/Logo_1.png?v=1743773994&width=280" />
+      <img class="logomobile_sec" src="https://cdn.shopify.com/s/files/1/0576/2167/6166/files/Logo_1_9daa13ae-401b-4d4d-8b41-cb9ec943413c.png?v=1757583583" />
+    </a> {% endcomment %}
+    <!-- Landing screen -->
+    <div class="quiz-screen quiz-start page-width">
+      <div class="contentsection-quiz">
+        <h2>Lorem Ipsum Dolor?</h2>
+        <p>Lorem Ipsum Dolor!</p>
+        <div class="buttonsection-timer">
+          <a href="#" id="startQuiz">Take Quiz</a>
+          {% comment %} <span>
+            <img src="https://cdn.shopify.com/s/files/1/0576/2167/6166/files/Vector_30_487c5f05-fb19-4d79-8935-d05e23a0f8fa.png?v=1756127360"/> 
+            10 sec
+          </span> {% endcomment %}
+        </div>
+      </div>
+      <div class="quizimage-section">
+        <img src="{{ section.settings.image | img_url : 'master' }}"/>
+      </div>
+    </div>
+
+    <!-- Quiz screen -->
+    <div class="quiz-screen quiz-questions">
+      
+       
+      
+      <h2 class="question-text"></h2>
+      <div class="options"></div>
+
+      <div class="progressbar-secbuttons" style="display:none">
+     <div class="progress-wrapper">
+        <div class="progress-bar">
+            <div class="progress"></div>
+        </div>
+        <div class="progress-text"></div>
+        </div>
+      <div class="navigation-buttons">
+        <button id="backBtn">Back</button>
+        <button id="nextBtn">Next</button>
+        </div>
+    </div>
+    </div>
+
+    <!-- Result screen -->
+    <div class="quiz-screen quiz-result" style="display:none;">
+      
+      <div class="finalscreen-quizsection">
+
+        <img src="https://cdn.shopify.com/s/files/1/0732/4188/6977/files/jasmine.webp?v=1740461059">
+
+        
+        <div class="content-sectionfinal">
+          <span class="signature_text">Your perfect match is…</span>
+      <div id="product-name">Vibe Tribe</div>
+          <p id="product-con">You love good energy, good people, and good times — and it shows. Vibe Tribe is all about fun connections, shared laughs, and being around people who just get you. Easy vibes. Real chemistry.</p>
+          
+ 
+
+      <div class="recipeaddtocart-section">
+          <h2>Pairs well with</h2>
+
+          <div class="recipeaddtocart-sectioninner"> 
+
+              <div class="productsec">
+                <img src="https://ejhyna30fjw6kqp5-69809471742.shopifypreview.com/cdn/shop/files/multi-for-women-50_8592eb04-ad69-49a8-8c23-604e17338e1f.png?v=1750333334&width=360">
+                <h2>MULTIVITAMIN FOR MEN 50+</h2>
+                <span>₦ 13,500</span>
+                <div class="shipping_txt">Free Shipping above  ₦ 20,000</div>
+                <button class="addtocart_btn" data-id="47013263835390">Add To Cart</button>
+              </div> 
+              <div class="productsec">
+                <img src="https://ejhyna30fjw6kqp5-69809471742.shopifypreview.com/cdn/shop/files/collagen.png?v=1762343939&width=360">
+                <h2>COLLAGEN BEAUTY FORMULA</h2>
+                <span>₦ 15,000</span>
+                <div class="shipping_txt">Free Shipping above  ₦ 20,000</div>
+                <button class="addtocart_btn" data-id="47013264031998">Add To Cart</button>
+              </div> 
+              <div class="productsec">
+                <img src="https://ejhyna30fjw6kqp5-69809471742.shopifypreview.com/cdn/shop/files/multi-for-men_d01dfa5c-d632-465f-9109-2017ebc55d2c.png?v=1734339026&width=360">
+                <h2>MULTIVITAMIN FOR MEN</h2>
+                <span>₦ 13,500</span>
+                <div class="shipping_txt">Free Shipping above  ₦ 20,000</div>
+                <button class="addtocart_btn" data-id="47013262655742">Add To Cart</button>
+              </div> 
+
+          </div>
+          
+      </div>
+
+          
+      </div>
+
+        </div>
+
+    </div>
+
+  </div>
+</div>
+
+  
+<style>
+
+
+
+.quizmain-section::before{
+  content:"";
+  position:absolute;
+  top:20%;
+  left:20px;
+  width:90px;
+  height:90px;
+  background:url("https://cdn.shopify.com/s/files/1/0698/0947/1742/files/love.png?v=1769175068") no-repeat center/contain;
+  pointer-events:none;
+}
+
+.quizmain-section::after{
+  content:"";
+  position:absolute;
+  bottom:0%;
+  right:25px;
+  width:110px;
+  height:110px;
+  background:url("https://cdn.shopify.com/s/files/1/0698/0947/1742/files/hearts.png?v=1769175069") no-repeat center/contain;
+  pointer-events:none;
+}
+</style>
+       
+      
+
+
+{% schema %}
+{
+  "name": "Quiz Main Section",
+  "class": "section",
+  "tag": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "classadd",
+      "label": "Class Add"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "mimage",
+      "label": "Mobile Image"
+    }
+  ], 
+  "presets": [
+    {
+      "name": " Quiz Main Section" 
+    }
+  ]
+}
+{% endschema %}
+
+ 
