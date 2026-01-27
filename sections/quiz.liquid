@@ -534,7 +534,7 @@ document.getElementById("quiz_file").addEventListener("change", function () {
   reader.onloadend = function () {
     const base64Data = reader.result.split(",")[1];
 
-    fetch("YOUR_GOOGLE_SCRIPT_WEB_APP_URL", {
+    fetch("https://script.google.com/macros/s/AKfycbx2rYc1ez_vgAKMOboUWN3i022JhQ5eKY5w_52epGnm4jUY0QoqE_vMMDk27IvkdYwR/exec", {
       method: "POST",
       body: new URLSearchParams({
         file: base64Data,
