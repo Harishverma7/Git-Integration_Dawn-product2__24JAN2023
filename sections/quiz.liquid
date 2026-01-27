@@ -50,6 +50,7 @@
         <input type="hidden" name="contact[file_link]" id="quiz_file_url">
 
 
+
         <label>Social Media Page Link
           <input type="url" name="contact[social_link]" id="quiz_social">
         </label>
@@ -525,41 +526,28 @@ $("#QuizContactForm").on("submit", function () {
 });
 
 
-const submitBtn = document.getElementById("getResults");
-submitBtn.disabled = true;
-
 document.getElementById("quiz_file").addEventListener("change", function () {
   const file = this.files[0];
   if (!file) return;
 
-  submitBtn.disabled = true;
+  const formData = new FormData();
+  formData.append("file", file);
+  formData.append("upload_preset", "YOUR_UPLOAD_PRESET");
 
-  const reader = new FileReader();
-
-  reader.onloadend = function () {
-    const base64Data = reader.result.split(",")[1];
-
-    fetch("https://script.google.com/macros/s/AKfycbx2rYc1ez_vgAKMOboUWN3i022JhQ5eKY5w_52epGnm4jUY0QoqE_vMMDk27IvkdYwR/exec", {
-      method: "POST",
-      body: new URLSearchParams({
-        file: base64Data,
-        name: file.name,
-        type: file.type
-      })
-    })
-    .then(res => res.json())
-    .then(data => {
-      document.getElementById("quiz_file_url").value = data.url;
-      submitBtn.disabled = false;
-    })
-    .catch(() => {
-      alert("File upload failed. Try again.");
-      submitBtn.disabled = true;
-    });
-  };
-
-  reader.readAsDataURL(file);
+  fetch("https://api.cloudinary.com/v1_1/YOUR_CLOUD_NAME/upload", {
+    method: "POST",
+    body: formData
+  })
+  .then(res => res.json())
+  .then(data => {
+    document.getElementById("quiz_file_url").value = data.secure_url;
+    document.getElementById("getResults").disabled = false;
+  })
+  .catch(() => {
+    alert("Upload failed");
+  });
 });
+
 
 
 </script>
