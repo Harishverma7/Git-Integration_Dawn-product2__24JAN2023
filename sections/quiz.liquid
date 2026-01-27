@@ -2,7 +2,6 @@
 <script src="{{ 'quiz.js' | asset_url }}"></script>
 {{ 'quiz.css' | asset_url | stylesheet_tag }}    
 
-<iframe name="quiz_contact_iframe" style="display:none;"></iframe>
 
 <div class="emailpopup-section">
   <div class="emailpopup-sectioninner">
@@ -15,8 +14,7 @@
 
     {% form 'contact',
       id: 'QuizContactForm',
-      class: 'quiz-contact-form',
-      target: 'quiz_contact_iframe'
+      class: 'quiz-contact-form'
     %}
 
       <input type="hidden" name="contact[quiz_result]" id="quiz_result">
@@ -65,6 +63,18 @@
       </div>
 
     {% endform %}
+
+    {% if form.posted_successfully? %}
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        document.querySelector(".emailpopup-section")?.classList.remove("active");
+        if (typeof showResult === "function") {
+        showResult();
+        }
+    });
+    </script>
+    {% endif %}
+
 
   </div>
 </div>
