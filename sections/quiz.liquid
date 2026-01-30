@@ -355,7 +355,8 @@ console.log("sdksm")
   const address = $("#quiz_address").val().trim();
   const social = $("#quiz_social").val().trim();
   const file = $("#quiz_file_url").val().trim();
-  const comments = $("#comments").val().trim()
+  const comments = $("#comments").val().trim();
+  const terms = 'true';
 
   const phoneRegex = /^[0-9]{10,15}$/;
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -369,7 +370,8 @@ console.log("sdksm")
     address,
     social,
     fileurl:file,
-    comments
+    comments,
+    terms
   };
   console.log(data)
 
@@ -416,6 +418,7 @@ console.log("sdksm")
   sessionStorage.setItem("quizSocial", social);
   sessionStorage.setItem("quiz_file_url", social);
   sessionStorage.setItem("comments", comments);
+  sessionStorage.setItem("terms", terms);
 
   //  const data = {
   //   name,
