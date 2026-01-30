@@ -38,6 +38,20 @@
         <label>Tell us a bit about yourself and why you don’t want to spend Valentine’s Day Alone
           <textarea id="comments" name="comments"></textarea>
         </label>
+
+        <label>Are you employed?
+          <select name="employed" id="quiz_employed" required>
+            <option value="">Select</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </select>
+        </label>
+
+        <label id="occupation_wrap" style="display:none;">
+          If yes, what do you do?
+          <input type="text" name="occupation" id="quiz_occupation">
+        </label>
+
         
         <input type="hidden" name="file_url" id="quiz_file_url">
 
@@ -371,16 +385,19 @@ console.log("sdksm")
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const urlRegex = /^(https?:\/\/)?([\w\-]+\.)+[a-z]{2,}\/?.*$/i;
 
-   const data = {
+  const data = {
     name,
     phone,
     email,
     age,
     address,
+    employed,
+    occupation,
     social,
-    fileurl:file,
+    fileurl: file,
     comments
   };
+
   console.log(data)
 
   if (!name) {
@@ -418,6 +435,17 @@ console.log("sdksm")
     return;
   }
 
+  if (!employed) {
+    alert("Please select employment status");
+    return;
+  }
+
+  if (employed === "Yes" && !occupation) {
+    alert("Please tell us what you do");
+    return;
+  }
+
+
   sessionStorage.setItem("quizName", name);
   sessionStorage.setItem("quizPhone", phone);
   sessionStorage.setItem("quizEmail", email);
@@ -426,6 +454,9 @@ console.log("sdksm")
   sessionStorage.setItem("quizSocial", social);
   sessionStorage.setItem("quiz_file_url", social);
   sessionStorage.setItem("comments", comments);
+  sessionStorage.setItem("quizEmployed", employed);
+  sessionStorage.setItem("quizOccupation", occupation);
+
 
   //  const data = {
   //   name,
@@ -621,6 +652,15 @@ function showRandomResultBlock() {
 }
 
 
+$("#quiz_employed").on("change", function () {
+  if ($(this).val() === "Yes") {
+    $("#occupation_wrap").slideDown();
+    $("#quiz_occupation").prop("required", true);
+  } else {
+    $("#occupation_wrap").slideUp();
+    $("#quiz_occupation").prop("required", false).val("");
+  }
+});
 
 
 
