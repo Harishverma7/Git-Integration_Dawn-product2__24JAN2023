@@ -1,8 +1,4 @@
 
-<script src="{{ 'quiz.js' | asset_url }}"></script>
-{{ 'quiz.css' | asset_url | stylesheet_tag }}    
-
-
 <div class="emailpopup-section">
   <div class="emailpopup-sectioninner">
     <div class="mainheading-popup">
@@ -13,10 +9,8 @@
     <!-- Google Sheets Form Start -->
     <form id="QuizGoogleForm" class="quiz-contact-form">
       <div class="emailbox-section">
-        <!-- Hidden field for quiz result -->
         <input type="hidden" name="quiz_score" id="quiz_score_field">
         
-        <!-- Existing fields -->
         <label>Your Name
           <input type="text" name="name" id="quiz_name" required>
         </label>
@@ -37,15 +31,14 @@
           <input type="text" name="address" id="quiz_address" required>
         </label>
 
-        <label>Upload File
-          <input type="file" id="quiz_file" accept="image/*,.pdf,.doc,.docx">
+        <label>Upload Image
+          <input type="file" id="quiz_file" accept="image/*">
         </label>
 
-        <label>Comments
+        <label>Tell us a bit about yourself and why you don’t want to spend Valentine’s Day Alone
           <textarea id="comments" name="comments"></textarea>
         </label>
         
-        <!-- Hidden field for file URL -->
         <input type="hidden" name="file_url" id="quiz_file_url">
 
         <label>Social Media Page Link
@@ -55,7 +48,7 @@
         <div class="checkbox-condition">
           <label>
             <input type="checkbox" id="quiz_consent" required>
-            Keep me in the loop with news and promotions via email.
+            I have read and agree to the Terms & Conditions.
           </label>
         </div>
 
@@ -67,14 +60,11 @@
           ✅ Details submitted successfully!
         </p>
         
-        <!-- Error messages container -->
         <div class="form-errors" style="display:none;color:#ff0000;margin-top:12px;"></div>
       </div>
     </form>
-    <!-- Google Sheets Form End -->
   </div>
 </div>
-
 
 
 
@@ -86,7 +76,7 @@
       <img class="logomobile_sec" src="https://cdn.shopify.com/s/files/1/0576/2167/6166/files/Logo_1_9daa13ae-401b-4d4d-8b41-cb9ec943413c.png?v=1757583583" />
     </a> {% endcomment %}
     <!-- Landing screen -->
-    <div class="quiz-screen quiz-start page-width">
+    <div class="quiz-screen quiz-start ">
       <div class="contentsection-quiz">
         <h2>Lorem Ipsum Dolor?</h2>
         <p>Lorem Ipsum Dolor!</p>
@@ -126,60 +116,81 @@
     </div>
 
     <!-- Result screen -->
-    <div class="quiz-screen quiz-result" style="display:none;">
-      
-      <div class="finalscreen-quizsection">
+<div class="quiz-screen quiz-result" style="display:none;">
+  <div class="finalscreen-quizsection">
 
-        <img src="https://cdn.shopify.com/s/files/1/0732/4188/6977/files/jasmine.webp?v=1740461059">
+    {% for block in section.blocks %}
+      <div class="content-sectionfinal">
 
-        
-        <div class="content-sectionfinal">
-          <span class="signature_text">Your perfect match is…</span>
-      <div id="product-name">Vibe Tribe</div>
-          <p id="product-con">You love good energy, good people, and good times — and it shows. Vibe Tribe is all about fun connections, shared laughs, and being around people who just get you. Easy vibes. Real chemistry.</p>
-          
- 
+        <span class="signature_text">
+          Your perfect match is
+        </span>
 
-      <div class="recipeaddtocart-section">
-          <h2>Pairs well with</h2>
-
-          <div class="recipeaddtocart-sectioninner"> 
-
-              <div class="productsec">
-                <img src="https://ejhyna30fjw6kqp5-69809471742.shopifypreview.com/cdn/shop/files/multi-for-women-50_8592eb04-ad69-49a8-8c23-604e17338e1f.png?v=1750333334&width=360">
-                <h2>MULTIVITAMIN FOR MEN 50+</h2>
-                <span>₦ 13,500</span>
-                <div class="shipping_txt">Free Shipping above  ₦ 20,000</div>
-                <button class="addtocart_btn" data-id="47013263835390">Add To Cart</button>
-              </div> 
-              <div class="productsec">
-                <img src="https://ejhyna30fjw6kqp5-69809471742.shopifypreview.com/cdn/shop/files/collagen.png?v=1762343939&width=360">
-                <h2>COLLAGEN BEAUTY FORMULA</h2>
-                <span>₦ 15,000</span>
-                <div class="shipping_txt">Free Shipping above  ₦ 20,000</div>
-                <button class="addtocart_btn" data-id="47013264031998">Add To Cart</button>
-              </div> 
-              <div class="productsec">
-                <img src="https://ejhyna30fjw6kqp5-69809471742.shopifypreview.com/cdn/shop/files/multi-for-men_d01dfa5c-d632-465f-9109-2017ebc55d2c.png?v=1734339026&width=360">
-                <h2>MULTIVITAMIN FOR MEN</h2>
-                <span>₦ 13,500</span>
-                <div class="shipping_txt">Free Shipping above  ₦ 20,000</div>
-                <button class="addtocart_btn" data-id="47013262655742">Add To Cart</button>
-              </div> 
-
-          </div>
-          
-      </div>
-
-          
-      </div>
-
+        <div class="product-name">
+          {{ block.settings.title }}
         </div>
 
-    </div>
+        <p class="product-con">
+          {{ block.settings.description }}
+        </p>
+
+        <div class="recipeaddtocart-section">
+          <h2>Pairs well with</h2>
+
+          <div class="recipeaddtocart-sectioninner">
+            {% for i in (1..3) %}
+              {% assign product_key = 'product_' | append: i %}
+              {% assign product = block.settings[product_key] %}
+
+              {% if product != blank %}
+                {% assign variant = product.selected_or_first_available_variant %}
+
+                <div class="productsec">
+                  <img src="{{ product.featured_image | img_url: '360x' }}">
+
+                  <h2>{{ product.title }}</h2>
+                  <span>{{ product.price | money }}</span>
+
+                  <div class="shipping_txt">
+                    Free Shipping above ₦ 20,000
+                  </div>
+
+                  <button
+                    class="addtocart_btn"
+                    data-id="{{ variant.id }}"
+                    {% unless variant.available %}disabled{% endunless %}>
+                    {% if variant.available %}
+                      Add To Cart
+                    {% else %}
+                      Sold Out
+                    {% endif %}
+                  </button>
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+
+      </div>
+    {% endfor %}
 
   </div>
 </div>
+
+
+  </div>
+</div>
+
+  
+       
+      
+
+
+
+
+
+
+ 
 
 
 
@@ -1338,11 +1349,10 @@ div#product-name {
     
 
 
-
 {% schema %}
 {
   "name": "Quiz Main Section",
-  "class": "section",
+  "class": "quizz_section",
   "tag": "section",
   "disabled_on": {
     "groups": ["header", "footer"]
@@ -1369,6 +1379,45 @@ div#product-name {
       "label": "Mobile Image"
     }
   ], 
+  "blocks": [
+    {
+      "type": "result_group",
+      "name": "Result Group",
+      "settings": [
+        {
+          "type": "text",
+          "id": "result_key",
+          "label": "Result Key (must match JS result)",
+          "info": "Example: vibe-tribe, soul-syncs, golden-bonds"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Result Title"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Result Description"
+        },
+        {
+          "type": "product",
+          "id": "product_1",
+          "label": "Product 1"
+        },
+        {
+          "type": "product",
+          "id": "product_2",
+          "label": "Product 2"
+        },
+        {
+          "type": "product",
+          "id": "product_3",
+          "label": "Product 3"
+        }
+      ]
+    }
+  ],
   "presets": [
     {
       "name": " Quiz Main Section" 
