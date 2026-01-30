@@ -320,7 +320,6 @@ $(document).ready(function () {
     $(".quiz-start").hide();
     $(".quiz-questions").show();
     renderQuestion();
-    $('.quizz_section').css('background-image', "url('https://cdn.shopify.com/s/files/1/0698/0947/1742/files/WhatsApp_Image_2026-01-27_at_7.58.05_PM.jpg?v=1769524376')");
   });
 
   /* ================= OPTION CLICK ================= */
@@ -366,8 +365,7 @@ console.log("sdksm")
   const address = $("#quiz_address").val().trim();
   const social = $("#quiz_social").val().trim();
   const file = $("#quiz_file_url").val().trim();
-  const comments = $("#comments").val().trim();
-  const terms = 'true';
+  const comments = $("#comments").val().trim()
 
   const phoneRegex = /^[0-9]{10,15}$/;
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -381,8 +379,7 @@ console.log("sdksm")
     address,
     social,
     fileurl:file,
-    comments,
-    terms
+    comments
   };
   console.log(data)
 
@@ -429,7 +426,6 @@ console.log("sdksm")
   sessionStorage.setItem("quizSocial", social);
   sessionStorage.setItem("quiz_file_url", social);
   sessionStorage.setItem("comments", comments);
-  sessionStorage.setItem("terms", terms);
 
   //  const data = {
   //   name,
@@ -442,7 +438,7 @@ console.log("sdksm")
   // };
   console.log(data)
 
-  fetch("https://script.google.com/macros/s/AKfycbyYlCUEyas-EZzzh95oN-_-nnfG108yrga_9YsoEZtHk1l8hDz5AUUmbZ2k_olkGwY/exec", {
+  fetch("https://script.google.com/macros/s/AKfycbw9NzD3LTdoJesZQPxVAyXfVnuv7cNbNIfCdrBAT2pLueLFdPVZ1H2n_cCzL7j7eyu7/exec", {
     method: "POST",
     mode: "no-cors",
     body: JSON.stringify(data),
@@ -471,6 +467,7 @@ console.log("sdksm")
     $(".quiz-result").show();
     $(".score-output").text(total + " / " + (quizData.length * 2));
     $(".logosection").removeClass("active");
+   showRandomResultBlock();
 
     let heading = "", paragraph = "", subheading = "", subpara = "", image = "";
 
@@ -529,14 +526,8 @@ $(document).on("click", ".addtocart_btn", function (e) {
     dataType: "json",
 
     success: function (item) {
-
-      /* ✅ Refresh cart data */
       $.getJSON("/cart.js", function (cart) {
-
-        /* 🔥 Trigger Shopify cart update events */
         $(document).trigger("cart:refresh", cart);
-
-        /* Optional: open drawer */
         if (window.upcartOpenCart) {
           window.upcartOpenCart();
         }
@@ -615,6 +606,20 @@ $(document).ready(function () {
   });
 
 });
+
+
+
+
+
+function showRandomResultBlock() {
+  var $results = $(".content-sectionfinal");
+  var total = $results.length;
+  if (!total) return;
+  $results.hide();
+  var randomIndex = Math.floor(Math.random() * total);
+  $results.eq(randomIndex).show();
+}
+
 
 
 
