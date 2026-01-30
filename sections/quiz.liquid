@@ -637,28 +637,6 @@ function showRandomResultBlock() {
 
 
 
-.quizmain-section::before{
-  content:"";
-  position:absolute;
-  top:20%;
-  left:20px;
-  width:90px;
-  height:90px;
-  background:url("https://cdn.shopify.com/s/files/1/0698/0947/1742/files/love.png?v=1769175068") no-repeat center/contain;
-  pointer-events:none;
-}
-
-.quizmain-section::after{
-  content:"";
-  position:absolute;
-  bottom:0%;
-  right:25px;
-  width:110px;
-  height:110px;
-  background:url("https://cdn.shopify.com/s/files/1/0698/0947/1742/files/hearts.png?v=1769175069") no-repeat center/contain;
-  pointer-events:none;
-}
-
 body.page.template-page-custom-quiz.gradient {
     background: #fff5f6;
 }
@@ -666,11 +644,14 @@ body.page.template-page-custom-quiz.gradient {
 .quizmain-section {
     background-image: url(/cdn/shop/files/Rectangle_28_6.png?v=1756127160);
     background-size: 100%;
-    padding: 20px 0;
-    margin: 10px;
+    padding: 0px 0 20px;
+    margin: 0px;
     background-repeat: no-repeat;
 }
-
+.quizz_section {
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 
 .quizmain-sectioninner.page-width {
     display: flex;
@@ -680,8 +661,7 @@ body.page.template-page-custom-quiz.gradient {
 a.logosection.active {
     left: 0;
     right: 0;
-    display: flex
-;
+    display: flex;
     justify-content: center;
 }
 .closebtnsec-quiz {
@@ -706,12 +686,12 @@ a.logosection.active {
     font-size: 34px;
     line-height: 30px;
     font-weight: 300;
-    color: #032A4F;
+    color: #fff;
     margin: 10px 0;
 }
 .contentsection-quiz p {
     font-size: 16px;
-    color: #032A4F;
+    color: #fff;
     margin: 0;
 }
 .buttonsection-timer {
@@ -720,18 +700,17 @@ a.logosection.active {
     gap: 15px;
 }
 .buttonsection-timer a {
-    background: #1fb557;
+    background: #FF5050;
     line-height: normal;
     text-decoration: none;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 130px;
     border-radius: 50px;
-    height: 50px;
     color: #fff;
     font-size: 16px;
     font-weight: 500;
+    padding: 16px 60px;
 }
 .buttonsection-timer span {
     display: flex;
@@ -751,15 +730,16 @@ a.logosection.active {
     font-size: 18px;
     font-weight: bold;
     margin-bottom: 10px;
+    color:white;
 }
 .navigation-buttons button {
-    background: #21b354;
+    background: #FF5050;
     border: none;
     padding: 9px 22px;
     border-radius: 5px;
     color: #fff;
     cursor: pointer;
-    font-family: 'gothambook';
+    font-family: gothambook;
     font-size: 16px;
 }
 
@@ -801,11 +781,11 @@ a.logosection.active {
     width: 48%;
     text-align: left;
     box-shadow: #63636333 0 2px 8px;
-    color: #032a4f;
+    color: #000;
     font-family: 'gothambook';
 }
 .options button.active {
-    background: #1fb557;
+    background: #FF6F7E;
     color: #fff;
 }
 
@@ -829,10 +809,10 @@ a.logosection.active {
 } 
 h2.question-text {
     text-align: center;
-    color: #032a4f;
+    color: #fff;
     font-size: 30px;
     font-weight: 300;
-    margin-top: 10rem;
+    margin-top: 0;
 }
 a.logosection {
     position: absolute;
@@ -844,7 +824,8 @@ a.logosection img {
 .finalscreen-quizsection {
     display: flex;
     align-items: center;
-} 
+    flex-direction: column;
+}
 .contentfinal-sec, .finalscreen_img {
     width: 50%;
 } 
@@ -868,14 +849,14 @@ a.logosection img {
     font-size: 14px;
     line-height: 20px;
     font-weight: 300;
-    color: #032A4F;
+    color: #000;
 } 
 .contentfinal-sec {
     padding-right: 8%;
 } 
 .othercontent-finalquiz h3 {
     margin: 0;
-    color: #032A4F;
+    color: #000;
     font-size: 24px;
     font-weight: 400;
 } 
@@ -883,7 +864,7 @@ a.logosection img {
     margin-top: 15%;
 } 
 .othercontent-finalquiz a {
-    background: #1fb557;
+    background: #000;
     color: #fff;
     text-decoration: none;
     font-size: 14px;
@@ -908,7 +889,7 @@ footer.footer {
     left: 0;
     right: 0;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     z-index: 99;
     display: none;
     align-items: center;
@@ -918,24 +899,14 @@ footer.footer {
 .emailpopup-section.active{ 
     display: flex;
 }
-.emailpopup-sectioninner {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #FFFFFF;
-    max-width: 500px;
-    margin: 0 auto;
-    padding: 30px;
-    border-radius: 24px;
-    flex-direction: column;
-}
+
 
 .mainheading-popup {
     width: 100%;
 }
 
 .mainheading-popup h2 {
-    color: #032A4F; 
+    color: #000; 
     font-size: 30px;
     line-height: 30px;
     font-weight: 400;
@@ -956,7 +927,7 @@ img.email-closebtn {
 .emailbox-section label {
     display: block;
     font-size: 14px;
-    color: #032A4F; 
+    color: #000; 
     font-weight: 500;
 }
 
@@ -964,16 +935,16 @@ img.email-closebtn {
     width: 100%;
 }
 
-.emailbox-section input {
+.emailbox-section input, .emailbox-section textarea {
     width: 100%;
     border: 1px #CDCAD2 solid;
-    padding: 16px;
+    padding: 10px;
     border-radius: 8px;
     margin-bottom: 15px; 
     font-weight: 300;
 }
 button#getResults {
-    background: #1eb556;
+    background: #FF5050;
     width: 100%;
     border: none;
     padding: 15px;
@@ -1013,7 +984,7 @@ button.submitQuiz {
     width: 120px;
     margin: 0 auto;
     margin-top: 2rem;
-    background: #1eb556;
+    background: #000;
     box-shadow: none;
     display: flex;
     justify-content: center;
@@ -1023,12 +994,6 @@ button.submitQuiz {
 }
 .logomobile_sec{
     display:none;
-}
-.content-sectionfinal {
-    position: absolute;
-    top: 4%;
-    padding: 0 70px;
-    text-align: center;
 }
 
 .finalscreen-quizsection >img {
@@ -1040,7 +1005,7 @@ span.signature_text {
     margin-bottom: 1rem;
     display: block;
 }
-div#product-name {
+div.product-name {
     font-size: 35px;
     color: #fff;
     line-height: normal;
@@ -1048,13 +1013,17 @@ div#product-name {
     text-align: center;
     font-weight: bold;
 }
-p#product-con {
-        background: #fdf3f5;
-        padding: 15px;
-        border-radius: 24px;
-        line-height: normal;
-        margin: 20px 180px;
-    }
+p.product-con {
+    background: #FF5050;
+    padding: 15px;
+    border-radius: 24px;
+    line-height: normal;
+    max-width: 700px;
+    width: 100%;
+    margin: 10px auto;
+    color: #fff;
+    line-height: 25px;
+}
 button#addtocart_btn {
     font-size: 18px;
     color: #a56f6f;
@@ -1067,9 +1036,7 @@ button#addtocart_btn {
 }
 
 .quiz-screen.quiz-result {
-    margin-top: 70px;
     position: relative;
-    margin: 49px -10px 0;
 }
 .recipeaddtocart-sectioninner {
     display: flex;
@@ -1080,7 +1047,7 @@ button#addtocart_btn {
     justify-content: center;
 }
 .productsec img {
-    width: 130px;
+    width: 180px;
     margin: 0 auto;
 }
 .productsec>h2 {
@@ -1093,8 +1060,11 @@ button#addtocart_btn {
     font-size: 16px;
 }
 body .shipping_txt {
-    background: #1eb556;
-    margin-bottom:10px;
+    background: #fff;
+    margin-bottom: 10px;
+    border: 1px solid #FF0012;
+    padding: 10px 20px;
+    border-radius: 10px;
 }
 .column1-recipe {
     width: 31%;
@@ -1103,16 +1073,18 @@ body .shipping_txt {
     background: #ffffffa8;
     padding: 14px;
     border-radius: 10px;
+    min-width: 300px;
 }
 button.addtocart_btn {
-    background: #1eb556;
+    background: #FF0012A1;
     border: none;
     font-size: 14px;
-    padding: 10px 20px 10px;
-    border-radius: 5px;
+    padding: 10px 20px;
+    border-radius: 10px;
     font-family: gothambook;
     color: #fff;
-    cursor:pointer;
+    cursor: pointer;
+    font-weight: 600;
 }
 .column1-recipe h2 {
     font-size: 22px;
@@ -1120,7 +1092,7 @@ button.addtocart_btn {
     margin-bottom: 10px;
 }
 .column1-recipe button {
-    background: #1eb556;
+    background: #000;
     color: #fff;
     border-radius: 6px;
     text-transform: uppercase;
@@ -1148,13 +1120,89 @@ button.addtocart_btn {
 }
 .recipeaddtocart-section>h2 {
     color: #fff;
-    margin: 50px 0 10px;
-    font-size: 25px !important;
+    margin: 20px 0 20px;
+    font-size: 25px!important;
 }
 a.video-btn {
     display: none;
 }
+
+
+.quiz-screen.quiz-start {
+    background-image: url('https://cdn.shopify.com/s/files/1/0698/0947/1742/files/Group_11_2.png?v=1769774097');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;
+}
+.quizimage-section {
+    padding: 20px;
+}
+.contentsection-quiz {
+    padding: 0 60px;
+}
+.quiz-screen.quiz-questions {
+    background-image:url('https://cdn.shopify.com/s/files/1/0698/0947/1742/files/Group_12.png?v=1769774098');
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top: 350px;
+    padding-bottom: 40px;
+    display:none;
+}
+.quizmain-section {
+    padding:0px;
+}
+.emailpopup-sectioninner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 30px;
+    border-radius: 24px;
+    flex-direction: column;
+    max-height: 100%;
+}
+form#QuizGoogleForm {
+    overflow: auto;
+    width:100%;
+}
+form#QuizGoogleForm  {
+    -ms-overflow-style: none; 
+    scrollbar-width: none; 
+}
+form#QuizGoogleForm ::-webkit-scrollbar { 
+    display: none; 
+}
+.content-sectionfinal {
+    position: relative;
+    top: 4%;
+    padding: 70px 70px;
+    text-align: center;
+    background-image: url('https://cdn.shopify.com/s/files/1/0698/0947/1742/files/Group_13.png?v=1769774097');
+    background-size: cover;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    width: 100%;
+}
+.emailbox-section input:focus-visible {
+    box-shadow: none !important;
+    outline: none !important;
+    border: 1px solid #FF5050;
+}
+#comments:focus-visible {
+    box-shadow: none !important;
+    outline: none !important;
+    border: 1px solid #FF5050;
+}
 /* Desktop CSS */
+
+
+
+
+
+
+
 
 
 @media(min-width:991px){
@@ -1183,16 +1231,18 @@ body.page.template-page-custom-quiz.gradient main#MainContent {
 .quizmain-section {
     background-repeat: no-repeat;
     background-size: cover;
-    padding: 0 0 30px;
+    padding: 0;
     border-radius: 20px; 
 }
 
 .quizmain-sectioninner.page-width {
     padding: 0;
 }
-
-.quizimage-section img {
-    border-radius: 20px 20px 0px 0px;
+.quiz-screen.quiz-start {
+    padding-bottom: 30px;
+}
+.contentsection-quiz {
+    padding: 0 20px;
 }
 
 a.logosection {
@@ -1210,7 +1260,7 @@ a.logosection {
 }
 
 .contentsection-quiz h2 {
-    font-size: 32px;
+    font-size: 28px;
     line-height: 40px;
     max-width: 240px;
     margin: 0 auto 10px;
@@ -1249,8 +1299,7 @@ a.logosection img {
     margin-left: -20px;
 } 
 .quiz-screen.quiz-questions {
-    padding: 0 10px;
-    height: 100vh;
+    padding: 20px 10px;
 } 
 .progressbar {
     position: absolute;
@@ -1303,20 +1352,19 @@ h2.question-text {
     overflow-x: auto;
 }
 
-p#product-con {
+p.product-con {
     width: 100%;
     margin: 0 0 10px;
 }
 
 .content-sectionfinal {
-    position: absolute;
+    position: relative;
     top: 4%;
     text-align: center;
     max-width: 1300px;
     left: 0;
     right: 0;
     margin: 0 auto;
-    padding: 0 50px;
 }
 
 .column1-recipe {
@@ -1337,16 +1385,58 @@ p#product-con {
     font-size: 15px;
 }
 
-div#product-name {
+div.product-name {
     line-height: normal;
     font-size: 30px;
     margin: 20px 0;
 }
+.quiz-screen.quiz-questions {
+    background-position: center;
+}
+.content-sectionfinal {
+    padding: 20px;
+}
+.recipeaddtocart-sectioninner{
+  display:flex;
+  gap:16px;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;
+    justify-content: left;
+}
 
+.recipeaddtocart-sectioninner::-webkit-scrollbar{
+  display:none;
+}
 
+.productsec{
+  flex:0 0 77%;
+  scroll-snap-align:start;
+  background:#fff;
+  border-radius:12px;
+  padding:16px;
+  box-sizing:border-box;
+}
+
+.productsec img{
+  width:100%;
+  height:auto;
+  display:block;
+}
+
+.addtocart_btn{
+  width:100%;
+  margin-top:12px;
+}
 
 
 }
+
+
+
+
+
+
 
 
 </style>
