@@ -5,86 +5,73 @@
 
 <div class="emailpopup-section">
   <div class="emailpopup-sectioninner">
-
     <div class="mainheading-popup">
       <h2>Before we show your results…</h2>
-      <img class="email-closebtn"
-        src="https://cdn.shopify.com/s/files/1/0576/2167/6166/files/Frame_3532_2.png?v=1757509273">
+      <img class="email-closebtn" src="https://cdn.shopify.com/s/files/1/0576/2167/6166/files/Frame_3532_2.png?v=1757509273">
     </div>
 
-    {% form 'contact',
-      id: 'QuizContactForm',
-      class: 'quiz-contact-form'
-    %}
-
-      <input type="hidden" name="contact[quiz_result]" id="quiz_result">
-
+    <!-- Google Sheets Form Start -->
+    <form id="QuizGoogleForm" class="quiz-contact-form">
       <div class="emailbox-section">
-
+        <!-- Hidden field for quiz result -->
+        <input type="hidden" name="quiz_score" id="quiz_score_field">
+        
+        <!-- Existing fields -->
         <label>Your Name
-          <input type="text" name="contact[name]" id="quiz_name" required>
+          <input type="text" name="name" id="quiz_name" required>
         </label>
 
         <label>Phone Number
-          <input type="tel" name="contact[phone]" id="quiz_phone">
+          <input type="tel" name="phone" id="quiz_phone" required>
         </label>
 
         <label>Email
-          <input type="email" name="contact[email]" id="quiz_email" required>
+          <input type="email" name="email" id="quiz_email" required>
         </label>
 
         <label>Age
-          <input type="number" name="contact[age]" id="quiz_age">
+          <input type="number" name="age" id="quiz_age" required>
         </label>
 
         <label>Address
-          <input type="text" name="contact[address]" id="quiz_address">
+          <input type="text" name="address" id="quiz_address" required>
         </label>
 
         <label>Upload File
-        <input type="file" id="quiz_file">
+          <input type="file" id="quiz_file" accept="image/*,.pdf,.doc,.docx">
         </label>
 
-<textarea name="contact[body]" id="quiz_message" style="display:none;"></textarea>
-
-
-
+        <label>Comments
+          <textarea id="comments" name="comments"></textarea>
+        </label>
+        
+        <!-- Hidden field for file URL -->
+        <input type="hidden" name="file_url" id="quiz_file_url">
 
         <label>Social Media Page Link
-          <input type="url" name="contact[social_link]" id="quiz_social">
+          <input type="url" name="social_link" id="quiz_social" placeholder="https://">
         </label>
 
         <div class="checkbox-condition">
           <label>
-            <input type="checkbox" required>
+            <input type="checkbox" id="quiz_consent" required>
             Keep me in the loop with news and promotions via email.
           </label>
         </div>
 
-        <button type="submit" id="getResults" disabled>
+        <button type="button" id="getResults" disabled>
           Get my Results! ✨
         </button>
 
         <p class="form-success-msg" style="display:none;color:#1eb556;margin-top:12px;">
           ✅ Details submitted successfully!
         </p>
-
+        
+        <!-- Error messages container -->
+        <div class="form-errors" style="display:none;color:#ff0000;margin-top:12px;"></div>
       </div>
-
-    {% endform %}
-
-    {% if form.posted_successfully? %}
-    <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        document.querySelector(".emailpopup-section")?.classList.remove("active");
-        if (typeof showResult === "function") {
-        showResult();
-        }
-    });
-    </script>
-    {% endif %}
-
-
+    </form>
+    <!-- Google Sheets Form End -->
   </div>
 </div>
 
@@ -322,6 +309,7 @@ $(document).ready(function () {
     $(".quiz-start").hide();
     $(".quiz-questions").show();
     renderQuestion();
+    $('.quizz_section').css('background-image', "url('https://cdn.shopify.com/s/files/1/0698/0947/1742/files/WhatsApp_Image_2026-01-27_at_7.58.05_PM.jpg?v=1769524376')");
   });
 
   /* ================= OPTION CLICK ================= */
@@ -355,8 +343,9 @@ $(document).ready(function () {
   });
 
   /* ================= EMAIL VALIDATION ================= */
-$("#getResults").click(function () {
-
+$("#getResults").click(function (e) {
+  e.preventDefault();
+console.log("sdksm")
   $(".errormsg").hide();
 
   const name = $("#quiz_name").val().trim();
@@ -366,10 +355,23 @@ $("#getResults").click(function () {
   const address = $("#quiz_address").val().trim();
   const social = $("#quiz_social").val().trim();
   const file = $("#quiz_file_url").val().trim();
+  const comments = $("#comments").val().trim()
 
   const phoneRegex = /^[0-9]{10,15}$/;
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const urlRegex = /^(https?:\/\/)?([\w\-]+\.)+[a-z]{2,}\/?.*$/i;
+
+   const data = {
+    name,
+    phone,
+    email,
+    age,
+    address,
+    social,
+    fileurl:file,
+    comments
+  };
+  console.log(data)
 
   if (!name) {
     $(".name-error").show();
@@ -413,6 +415,29 @@ $("#getResults").click(function () {
   sessionStorage.setItem("quizAddress", address);
   sessionStorage.setItem("quizSocial", social);
   sessionStorage.setItem("quiz_file_url", social);
+  sessionStorage.setItem("comments", comments);
+
+  //  const data = {
+  //   name,
+  //   phone,
+  //   email,
+  //   age,
+  //   address,
+  //   social,
+  //   comments
+  // };
+  console.log(data)
+
+  fetch("https://script.google.com/macros/s/AKfycbwI4o5qrkCh6pwZL7QE36Oi7JPtDlwouKDc1BqwHXFBPOpGAs_PKALZ-MDjXrgljc3vyA/exec", {
+    method: "POST",
+    mode: "no-cors",
+    body: JSON.stringify(data),
+    headers: { "Content-Type": "application/json" }
+  })
+  .then(res => res.json())
+  .then(() => alert("Data added"))
+  .catch(err => console.error(err));
+
 
   $(".emailpopup-section").removeClass("active");
   showResult();
@@ -520,6 +545,8 @@ $(document).on("click", ".addtocart_btn", function (e) {
 
 
 
+
+
 $("#QuizContactForm").on("submit", function () {
 
   $("#quiz_result").val(sessionStorage.getItem("quizScore") || "N/A");
@@ -537,28 +564,46 @@ $("#QuizContactForm").on("submit", function () {
 
 
 
-document.getElementById("quiz_file").addEventListener("change", function () {
-  const file = this.files[0];
-  if (!file) return;
 
-  const formData = new FormData();
-  formData.append("file", file);
-  formData.append("upload_preset", "quiz_upload");
+$(document).ready(function () {
+  $("#quiz_file").on("change", function () {
+    const file = this.files[0];
+    if (!file) return;
 
-fetch("https://api.cloudinary.com/v1_1/dsra5vukf/upload", {
-  method: "POST",
-  body: formData
-})
-  .then(res => res.json())
-  .then(data => {
-document.getElementById("quiz_message").value =
-  "Uploaded File:\n" + data.secure_url;
-    document.getElementById("getResults").disabled = false;
-  })
-  .catch(() => {
-    alert("Upload failed");
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("upload_preset", "quiz_upload");
+
+    fetch("https://api.cloudinary.com/v1_1/dsra5vukf/upload", {
+      method: "POST",
+      body: formData
+    })
+    .then(res => res.json())
+    .then(data => {
+
+      if (!data.secure_url) {
+        alert("Upload failed");
+        return;
+      }
+
+      $("#quiz_file_url").val(data.secure_url);
+
+      $("#getResults").prop("disabled", false);
+
+      console.log("Uploaded:", data.secure_url);
+
+    })
+    .catch(err => {
+      console.error(err);
+      alert("Upload error");
+    });
+
   });
+
 });
+
+
+
 
 
 
